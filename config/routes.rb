@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :shipping_addresses
   resources :goods, only: [:index, :show]
   resources :cart_items
+  delete 'cart_items' => 'cart_items#destroy_all'
   resources :orders
   post 'orders/confirmation' => 'orders#confirmation'
   get 'orders/success' => 'orders#success'
