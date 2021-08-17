@@ -8,10 +8,17 @@ class HomesController < ApplicationController
     #もしもジャンル検索を適用するなら下のコメントアウトの＃消してください
     #@genre = Genre.all
     end
-    
-    def about
-        
-    end
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
 end
