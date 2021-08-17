@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2021_08_17_054312) do
     t.string "name", default: "", null: false
     t.string "shipping_postal_code", default: "", null: false
     t.text "shipping_address", default: "", null: false
+  end
 
   create_table "goods", force: :cascade do |t|
     t.integer "genre_id"
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(version: 2021_08_17_054312) do
     t.string "image_id"
     t.text "introduction"
     t.integer "price"
+  end
 
 
   create_table "genres", force: :cascade do |t|
