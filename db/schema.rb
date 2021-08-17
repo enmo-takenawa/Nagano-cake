@@ -53,6 +53,12 @@ ActiveRecord::Schema.define(version: 2021_08_17_054312) do
   end
 
 
+
+  create_table "shipping_addresses", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "shipping_postal_code", default: "", null: false
+    t.text "shipping_address", default: "", null: false
+
   create_table "goods", force: :cascade do |t|
     t.integer "genre_id"
     t.integer "sales_status"
@@ -60,6 +66,7 @@ ActiveRecord::Schema.define(version: 2021_08_17_054312) do
     t.string "image_id"
     t.text "introduction"
     t.integer "price"
+
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
