@@ -1,34 +1,28 @@
-class ShippingAddressController < ApplicationController
-    
-    def index
+class Public::ShippingAddressController < ApplicationController
+  def index
         @shipping_adress = current_customer.shipping_address
         @shipping_adress_new = Shipaddress.new
-        
-        
-    end
+  end
     
-    def show
+  def show
         @shipping_address = Shipingaddress.find(params[:id])
         @customer = Customer.find(params[:id])
-    end
+  end
     
-    def edit
+  def edit
         @shipping_address = Shipingaddress.find(params[:id])
         
-    end
+  end
     
-    def update
+  def update
         shipping_address = ShippingAddress.find(params[:id])
         shipping_address.update(shipping_address_params)
         redirect_to shipping_address_path
-    end
+  end
     
-    def destroy
+  def destroy
         shipping_address = ShippingAddress
         shipping_address.destroy
         redirect_to shipping_address_path
-    end
-    
-    
-
+  end
 end
