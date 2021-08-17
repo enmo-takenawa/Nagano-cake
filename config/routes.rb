@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :admins
+  devise_for :admins, controllers: {
+    sessions: 'adimns/sessions'
+  } #管理者ログイン画面へのルーティング
+
   devise_for :customers
-  
-  
+
+
   root to: 'homes#top'
   get 'home/about' => 'homes#about'
-  
+
   resources :customers, only: [:edit, :show, :update]
   get 'customers/unsubscribe' => 'customers#unsubscribe'
   resources :shipping_addresses
@@ -15,7 +18,7 @@ Rails.application.routes.draw do
   resources :orders
   post 'orders/confirmation' => 'orders#confirmation'
   get 'orders/success' => 'orders#success'
-  
+
   namespace :admin do
     resources :orders
     patch 'ordered_goods/:id' => 'ordered_goods#update'
@@ -23,5 +26,5 @@ Rails.application.routes.draw do
     resources :customers, except: [:destroy]
     resources :genres, except: [:destroy]
   end
-  
+
 end

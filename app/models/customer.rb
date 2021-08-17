@@ -3,4 +3,9 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         
+  has_many :users
+  has_many :orders, through: :ordered_goods
+  belongs_to :genre
+  
 end
