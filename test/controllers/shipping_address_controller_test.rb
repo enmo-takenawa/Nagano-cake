@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ShippingAdressControllerTest < ActionDispatch::IntegrationTest
+class ShippingAddressControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
