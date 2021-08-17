@@ -7,7 +7,5 @@ class Public::CustomersController < ApplicationController
   
   def unsubscribe
   end
-  
-  
-  
+
 end
