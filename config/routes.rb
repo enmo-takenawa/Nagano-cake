@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :admins, controllers: {
-    sessions: 'adimns/sessions'
+    sessions: 'admins/sessions'
   } #管理者ログイン画面へのルーティング
 
   devise_for :customers
