@@ -1,0 +1,50 @@
+<h1>会員情報編集</h1>
+
+
+<%= form_with model: @customer do |f| %>
+
+<div class="form-group">
+    <%= f.label :氏名, class: "border border-dark" %>
+    <div class="row">
+        <%= f.text_field :first_name %>
+        <%= f.text_field :last_name %>
+    </div>
+</div>
+
+<div class="from-group">
+     <% f.label :カナ, class: "border border-dark" %>
+    <div class="row">
+        <%= f.text_field :first_name_kana %>
+        <%= f.text_field :last_name_kana %>
+    </div>
+</div>
+
+<div class="from-group">
+    <%= f.label :郵便番号, class: "border border-dark" %>
+    <%= f.text_field :postal_code %>
+    </div>
+    
+<div class="from-group">
+    <%= f.label :住所, class: "border border-dark" %>
+    <%= f.text_field :address %>
+</div>
+
+<div class="form-group">
+    <%= f.label :電話番号, class: "border border-dark" %>
+    <%= f.text_field :telephone_number %>
+</div>
+
+<div class="form-group">
+    <%= f.label :メールアドレス, class: "border border-dark" %>
+    <%= f.text_field :email %>
+</div>
+
+<div class="row">
+    <%= f.submit "変更内容を保存", class: "btn btn-primary" %>
+</div>
+<% end %>
+</div>
+
+<div class="row">
+    <%= link_to "退会する" , unsubscribe_customer_path(@customer), class: "btn btn-denger" %>
+</div>
