@@ -1,0 +1,34 @@
+<h2>商品一覧</h2>
+
+<div>
+  <%= link_to new_admins_good_path do %> <!--十字架ボタン（商品作成ページへ）-->
+    <button>+</button>
+  <% end %>
+</div>
+
+<table class="">
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @goods.each do |good| %>
+      <tr>
+        <td><%= good.id %></td>
+        <td>
+          <%= link_to good_path(good) do %>
+            <%= good.name %> <!--商品詳細ページへのリンク-->
+          <% end %>
+        </td>
+        <td><%= good.price %></td>
+        <td><%= good.genre.name %></td>
+        <td><%= good.sales_status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
