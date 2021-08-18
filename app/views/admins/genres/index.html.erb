@@ -1,0 +1,25 @@
+<main>
+    <h2 class="mt-1">ジャンル一覧・追加</h2>
+    <%= form_with model: @genre, local:true do |f| %>
+        <div class="form-group">
+            <p>ジャンル名</p>
+            <%= f.text_field :name %>
+        </div>
+    <% end %>
+
+    <table class="table">
+            <thead>
+                <tr>
+                    <th>ジャンル</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @genres.each do |genre| %>
+                    <tr>
+                        <td><%= genre.name %></td>
+                        <td><%= link_to "編集", edit_admin_genre_path, class: "btn btn-sm btn-success" %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+    </table>
+</main>

@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-
-ActiveRecord::Schema.define(version: 2021_08_17_054312) do
+ActiveRecord::Schema.define(version: 2021_08_17_142826) do
 
   create_table "administratos", force: :cascade do |t|
     t.string "admin_email"
@@ -20,7 +18,6 @@ ActiveRecord::Schema.define(version: 2021_08_17_054312) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -58,23 +55,10 @@ ActiveRecord::Schema.define(version: 2021_08_17_054312) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
-
-  create_table "orders", force: :cascade do |t|
-    t.string "shipping_postal_code"
-    t.string "shipping_address"
-    t.string "shipping_name"
-    t.integer "shipping_fee"
-    t.integer "total_price"
-    t.integer "payment_method"
-    t.integer "order_status"
-  end
-
-
-
-  create_table "shipping_addresses", force: :cascade do |t|
-    t.string "name", default: "", null: false
-    t.string "shipping_postal_code", default: "", null: false
-    t.text "shipping_address", default: "", null: false
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "goods", force: :cascade do |t|
@@ -84,19 +68,42 @@ ActiveRecord::Schema.define(version: 2021_08_17_054312) do
     t.string "image_id"
     t.text "introduction"
     t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
+  create_table "ordered_goods", force: :cascade do |t|
+    t.integer "goods_id", null: false
+    t.integer "order_id", null: false
+    t.integer "quantity", null: false
+    t.integer "price", null: false
+    t.integer "production_status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
-  create_table "genres", force: :cascade do |t|
-    t.string "name"
+  create_table "orders", force: :cascade do |t|
+    t.string "shipping_postal_code"
+    t.string "shipping_address"
+    t.string "shipping_name"
+    t.integer "shipping_fee"
+    t.integer "total_price"
+    t.integer "payment_method"
+    t.integer "order_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "renres", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
-
+  create_table "shipping_addresses", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "shipping_postal_code", default: "", null: false
+    t.text "shipping_address", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
