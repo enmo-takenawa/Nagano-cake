@@ -1,4 +1,4 @@
-<h2>Login</h2>
+<h2>ログイン</h2>
 
 会員の方はこちらからログイン
 
@@ -21,8 +21,11 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "ログイン" %>
   </div>
 <% end %>
 
-<%= render "public/devises/shared/links" %>
+会員登録がお済みでない方
+<%= link_to new_customer_registration_path "こちら" %>　から新規登録を行ってください。
+
+<%= render "customers/shared/links" %>
