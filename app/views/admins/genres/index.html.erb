@@ -8,18 +8,18 @@
     <% end %>
 
     <table class="table">
-            <thead>
+        <thead>
+            <tr>
+                <th>ジャンル</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @genres.each do |genre| %>
                 <tr>
-                    <th>ジャンル</th>
+                    <td><%= genre.name %></td>
+                    <td><%= link_to "編集", edit_admin_genre_path, class: "btn btn-sm btn-success" %></td>
                 </tr>
-            </thead>
-            <tbody>
-                <% @genres.each do |genre| %>
-                    <tr>
-                        <td><%= genre.name %></td>
-                        <td><%= link_to "編集", edit_admin_genre_path, class: "btn btn-sm btn-success" %></td>
-                    </tr>
-                <% end %>
-            </tbody>
+            <% end %>
+        </tbody>
     </table>
 </main>
