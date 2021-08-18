@@ -27,7 +27,7 @@ class Admins::SessionsController < Devise::SessionsController
 
   protected
   def after_sign_in_path_for(resource)
-    admin_items_patah　#ログイン後商品一覧画面へ遷移
+    admin_goods_path　#ログイン後商品一覧画面へ遷移
   end
 
   def after_sign_out_path_for(resource)
