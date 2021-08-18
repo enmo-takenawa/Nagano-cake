@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   post 'orders/confirmation' => 'orders#confirmation'
   get 'orders/success' => 'orders#success'
 
-  namespace :admin do
+  namespace :admins do
     resources :orders
     patch 'ordered_goods/:id' => 'ordered_goods#update'
     resources :goods
