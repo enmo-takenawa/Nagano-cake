@@ -1,1 +1,20 @@
 <h2>注文情報入力</h2>
+
+<h5>支払い方法</h5>
+  <%= form_with model: @order, url: orders_confirmation_path local: true do |f| %>
+    <%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %>
+    <%= f.label :payment_method, "クレジットカード" %>
+    <%= f.radio_button :payment_method, :銀行振込 %>
+    <%= f.label :payment_method, "銀行振込" %>
+
+
+<h5>お届け先</h5>
+  
+    <%= f.radio_button :gender, :male %>
+    <%= f.label :gender, "ご自身の住所", {value: :male, style: "display: inline-block;"} %>
+    <%= f.radio_button :gender, :female %>
+    <%= f.label :gender, "登録済み住所から選択", {value: :female, style: "display: inline-block;"} %>
+    <%= f.radio_button :gender, :female %>
+    <%= f.label :gender, "新しいお届け先", {value: :female, style: "display: inline-block;"} %>
+  <% end %>
+

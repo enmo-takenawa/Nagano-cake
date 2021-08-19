@@ -13,6 +13,11 @@ class Public::OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
   
+  def create
+    @order = Order.new
+    @order.customer_id = current_customer.id
+  end
+  
   def confirmation
   end
   
