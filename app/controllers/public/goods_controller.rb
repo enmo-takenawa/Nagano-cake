@@ -4,5 +4,6 @@ class Public::GoodsController < ApplicationController
   end
   
   def show
+    @good = Good.find(params[:id])
   end
 end
