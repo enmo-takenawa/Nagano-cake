@@ -4,8 +4,9 @@
 
 
 <div class="row">
-<%= form_with model: shipping_address.new do |f| %>
+<%= form_with model: shipping_addresses.new do |f| %>
 <tr class="form-group row">
+    
     <td>郵便番号（ハイフンなし）</td>
     <td><%= f.text_field :shipping_postal_code, class: "form-control", placeholder: "0000000" %></td>
 </tr>
