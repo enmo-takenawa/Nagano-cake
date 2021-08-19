@@ -21,7 +21,7 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @shipping_address = ShippingAddress.new
-    @address = current_customer.shipping_address.all
+    @address = current_customer.shipping_address.all #登録済み住所
   end
   
   def confirmation
