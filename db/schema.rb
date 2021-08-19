@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2021_08_18_121754) do
 
   create_table "admins", force: :cascade do |t|
@@ -57,7 +58,7 @@ ActiveRecord::Schema.define(version: 2021_08_18_121754) do
 
   create_table "goods", force: :cascade do |t|
     t.integer "genre_id"
-    t.integer "sales_status"
+    t.boolean "sales_status", default: false
     t.string "name"
     t.string "image_id"
     t.text "introduction"

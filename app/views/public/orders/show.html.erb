@@ -1,0 +1,88 @@
+<%#注文履歴詳細ページ%>
+<div class="row">
+    <div class="offset-1">
+
+<h2>注文履歴詳細</h2>
+
+</div>
+</div>
+
+<%#注文情報////////////////////////////////////////////////////////////////////////////////////%>
+<div class="row">
+    <h4>注文情報</h4>
+</div>
+
+<tr class = "border">
+    <tbody>
+    <td>注文日</td>
+    <tb><%= @order.created_at("%Y-%m-%d") %></tb>
+</tr>
+
+<tr class = "border">
+    <td>配送先</td>
+    <% shipping_address = ShippingAddress.find(@order.address) %>
+    <td><%= "〒" + shipping_address.post_code + "  " + shipping_address.address + "  " + shipping_address.first_name + shipping_address.last_name %></td>
+</tr>
+
+<tr class = "border">
+    <td>支払い方法</td>
+    <td><%= @order.payment_method %></td>
+</tr>
+
+<tr class = "border">
+    <td>ステータス</td>
+    <td><%= @prder.order_status %></td>
+</tr>
+</tbody>
+
+<%#請求情報////////////////////////////////////////////////////////////////////////////////////%>
+<div class="row">
+    <h4>請求情報</h4>
+</div>
+
+<div class="row">
+    <tbody>
+        <tr class="border">
+            <td>商品合計</td>
+            <td><%= @order.total_price %></td>
+        </tr>
+        
+        <tr class="border">
+            <td>配送料</td>
+            <td><%= @order.shipping_fee %></td>
+        </tr>
+        
+        <tr class="border">
+            <td>ご請求額</td>
+            <td><%= @order.total_price + @order.shipping_fee %></td>
+        </tr>
+    </tbody>
+</div>
+
+<%#注文内容////////////////////////////////////////////////////////////////////////////////////%>
+<div class="row">
+    <h4>注文内容</h4>
+</div>
+
+<div class="row">
+    <table class = "table table-borderless">
+        <thead>
+            <tr class = "border">
+                <th>商品</th>
+                <th>単価（税込）</th>
+                <th>個数</th>
+                <th>小計</th>
+            </tr>
+        </thead>
+        <% @order_detalists.each do |f| %>
+        <tbody>
+            <tr class = "border">
+                <td><%= f.item_name %></td>
+                <td><%= f.item_price %></td>
+                <td><%= f.quantity %></td>
+                <td><%= f.item_price * f.quantity %></td>
+            </tr>
+        </tbody>
+        <% end %>
+    </table>
+</div>
