@@ -3,6 +3,8 @@
 
 <%#商品一覧表示%>
   <% @goods.each do |good| %>
-    <%= attachment_image_tag good, :image,  %>
+    <%= attachment_image_tag good, :image %>
     <%= good.name %>
     ¥<%= good.price %>
+  <% end %>
+  <%= paginate @goods %>
