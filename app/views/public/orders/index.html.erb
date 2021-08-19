@@ -25,7 +25,7 @@
                     <% if order.address = ShippingAddress.find(order.address) %>
                     <%#配送先%>
                     <td class="align-middle">
-                        <%= "〒" + ship_address.post_code + "  " + ship_address.address + "  " + ship_address.last_name + ship_address.first_name %>
+                        <%= "〒" + shipping_address.post_code + "  " + shipping_address.address + "  " + shipping_address.first_name + shipping_address.last_name %>
                     </td>
 
                     <% else %>
