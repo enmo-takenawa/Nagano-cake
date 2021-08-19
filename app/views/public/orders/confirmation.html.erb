@@ -1,0 +1,26 @@
+<h2>注文情報確認</h2>
+<%#注文内容%>
+<div class="row">
+    <table class = "table table-borderless">
+        <thead>
+            <tr class = "border">
+                <th>商品名</th>
+                <th>単価（税込）</th>
+                <th>個数</th>
+                <th>小計</th>
+            </tr>
+        </thead>
+        <% @order.each do |f| %>
+        <tbody>
+            <tr class = "border">
+                <td><%= f.%></td>
+                <td><%= f.item_name %></td>
+                <td><%= f.item_price %></td>
+                <td><%= f.quantity %></td>
+                <td><%= f.item_price + f.quantity %></td>
+            </tr>
+        </tbody>
+        <% end %>
+    </table>
+</div> 
+
