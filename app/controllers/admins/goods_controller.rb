@@ -5,7 +5,7 @@ class Admins::GoodsController < ApplicationController
 
   def new
     @good = Good.new
-    @genres = Genre.all 
+    @genres = Genre.all
   end
 
   def create
@@ -23,11 +23,11 @@ class Admins::GoodsController < ApplicationController
 
   def update
   end
-  
+
   private
-  def item_params
+  def good_params
     params.require(:good).permit(:name, :genre_id, :introduction, :price, :sales_status, :image)
   end
-    
-  
+
+
 end
