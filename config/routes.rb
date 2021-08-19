@@ -23,9 +23,6 @@ Rails.application.routes.draw do
     get 'orders/success' => 'orders#success'
   end
 
-  root to: 'homes#top'
-  get 'home/about' => 'homes#about'
-
   resources :customers, only: [:edit, :show, :update]
   get 'customers/unsubscribe' => 'customers#unsubscribe'
   resources :shipping_addresses
