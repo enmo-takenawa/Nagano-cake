@@ -1,0 +1,50 @@
+<%#配送先新規登録と一覧表示%>
+
+<h2 class="border">配送先登録/一覧</h2>
+
+
+<div class="row">
+<%= form_with model: shipping_address.new do |f| %>
+<tr class="form-group row">
+    <td>郵便番号（ハイフンなし）</td>
+    <td><%= f.text_field :shipping_postal_code, class: "form-control", placeholder: "0000000" %></td>
+</tr>
+
+<tr class="form-group row">
+    <td>住所</td>
+    <td><%= f.text_field :shipping_address, class: "form-control", placeholder: "住所"　%></td>
+</tr>
+
+<tr class="form-group row">
+    <td>宛名</td>
+    <td><%= f.text_field :shipping_name, class: "form-control", placeholder: "田中太郎" %></td>
+</tr>
+<div class = "row">
+    <%= f.submit "新規登録", class: "btn btn-primary" %>
+</div>
+<% end %>
+</div>
+
+<%#一覧表示///////////////////////////////////////////////////////////////////////%>
+<div class = "row">
+<table class = "table-borderless table-hover">
+    <thead>
+        <tr class = "border">
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @shipping_address.each do |shipping_address| %>
+        <tr class = "border">
+            <td><%= shipping_address.shipping_postal_code %></td>
+            <td><%= shipping_address.shipping_address %></td>
+            <td><%= shipping_address.shipping_name %></td>
+            <td><%= link_to "編集する", edit_shipping_address_path(shipping_address), class: "btn btn-primary"%>
+                <%= link_to "削除する", shipping_address_path(shipping_address), method: :deleat, data: {confirm: "本当に削除しますか？"}, class: "btn btn-denger" %>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
