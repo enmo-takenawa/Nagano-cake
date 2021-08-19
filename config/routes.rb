@@ -18,11 +18,13 @@ Rails.application.routes.draw do
     resources :goods, only: [:index, :show]
     resources :cart_items
     delete 'cart_items' => 'cart_items#destroy_all'
-    resources :orders
-    post 'orders/confirmation' => 'orders#confirmation'
-    get 'orders/success' => 'orders#success'
+    resources :orders do
+      post 'orders/confirmation' => 'orders#confirmation'
+      collection do
+        get 'success'
+      end
+    end
   end
-
 
 
   namespace :admins do

@@ -13,6 +13,11 @@ class Public::OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
   
+  def confirmation
+  end
+  
+  def success
+  end
   
   private
   def order_params
