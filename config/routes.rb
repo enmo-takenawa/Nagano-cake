@@ -19,8 +19,8 @@ Rails.application.routes.draw do
     resources :cart_items
     delete 'cart_items' => 'cart_items#destroy_all'
     resources :orders do
-    post 'orders/confirmation' => 'orders#confirmation'
       collection do
+        post 'confirmation'
         get 'success'
       end
     end
