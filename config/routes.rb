@@ -3,7 +3,10 @@ Rails.application.routes.draw do
     sessions: 'admins/sessions'
   } #管理者ログイン画面へのルーティング
 
-  devise_for :customers
+  devise_for :customers, controllers: {
+    sessions: 'public/devise/sessions'
+  } 
+  
 
   scope module: :public do
     root to: 'homes#top'
@@ -32,6 +35,7 @@ Rails.application.routes.draw do
   resources :orders
   post 'orders/confirmation' => 'orders#confirmation'
   get 'orders/success' => 'orders#success'
+
 
 
   namespace :admins do
