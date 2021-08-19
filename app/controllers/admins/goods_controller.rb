@@ -25,7 +25,7 @@ class Admins::GoodsController < ApplicationController
   
   private
   def item_params
-    params.require(:good).permit(:name, :genre_id, :introduction, :price, :is_active, :image)
+    params.require(:good).permit(:name, :genre_id, :introduction, :price, :sales_status, :image)
   end
     
   
