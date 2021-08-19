@@ -1,0 +1,11 @@
+<h2>商品詳細</h2>　<%#開発用見出し、実装時には消す%>
+
+<%= attachment_image_tag @good, :image %>
+<%= @good.name %>
+¥<%= @good.price %>（税込）
+
+<%= form_with model:cart_item, local: true do |f| %>
+  <%= f.hidden_field :good_id, value: @good.id %>
+  <%= f.select :quantity, options_for_select((1..20).to_a), include_blank: "個数選択" %>
+  <%= f.submit "カートに入れる" %>
+<% end %>
