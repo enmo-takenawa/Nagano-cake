@@ -12,7 +12,7 @@
             <td>ステータス</td>
             <td>注文詳細</td>
             </thead>
-            
+
             <%#ここから履歴の数字とかを入れるための記述%>
             <tbody>
                 <% @orders.each do |order| %>
@@ -21,26 +21,26 @@
                     <td class="align-middle">
                         <%= order.created_at.strftime("%Y-%m-%d %H:%M") %>
                     </td>
-                    
+
                     <% if order.address = ShippingAddress.find(order.address) %>
                     <%#配送先%>
                     <td class="align-middle">
                         <%= "〒" + shipping_address.post_code + "  " + shipping_address.address + "  " + shipping_address.first_name + shipping_address.last_name %>
                     </td>
-                    
+
                     <% else %>
                     <td class="align-middle">
                         <% order.order_details.each do |f| %>
                         <%= f.item_name %>
                         <% end %>
                     </td>
-                    
+
                     <td class="align-middle"><%= order.total_price %></td>
-                    
+
                     <tb class="align-middle"><%= order.order_status %></tb>
-                    
+
                     <td class="align-middle"><%=link_to "表示する",order_path(order), class: "btn btn-primary" %></td>
-                    
+
                 </tr>
                 <% end %>
             </tbody>
