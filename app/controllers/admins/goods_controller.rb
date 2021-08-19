@@ -4,9 +4,14 @@ class Admins::GoodsController < ApplicationController
   end
 
   def new
+    @good = Good.new
+    @genres = Genre.all
   end
 
   def create
+    @good = Good.new(good_params)
+    @good.save
+    redirect_to admins_good_path(@good.id)
   end
 
   def show
@@ -22,10 +27,10 @@ class Admins::GoodsController < ApplicationController
     @good.update(good_params)
     redirect_to admins_good_path(@good.id)
   end
-  
+
   private
   def good_params
-    params.require(:good).permit(:name, :introduction, :genre_id, :price, :sales_status)
+    params.require(:good).permit(:name, :genre_id, :introduction, :price, :sales_status, :image)
   end
 
 end
