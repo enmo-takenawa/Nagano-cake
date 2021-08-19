@@ -1,0 +1,33 @@
+<h2>ショッピングカート</h2>
+  <% if @goods.exists? %>
+    <table class = "table">
+       <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @goods.each do |good| %>
+          <tr>
+            <td><%= attachment_image_tag good, :image %><%= good.name %></td>
+            <td><%= good.price %></td>
+            <td><%= good.quantity %></td>
+            <td><%= good.total_price %></td>
+          </tr>
+          <tr>
+            <td>合計金額</td>
+            <td></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+    <%= link_to "買い物を続ける", goods_path %>
+    
+    情報入力に進む
+  <% else %>
+    <p>カートは空です</p>
+  <% end %>
