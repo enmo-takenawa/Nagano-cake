@@ -1,0 +1,21 @@
+<%#配送先編集ページ%>
+
+<h2 class="border">配送先編集</h2>
+
+
+<%= form_with model: @shipping_address do |f| %>
+
+<div class="form-group row">郵便番号（ハイフンなし）</div>
+    <%= f.text_field :shipping_postal_code %>
+
+
+<div class="form-group row">住所</div>
+    <%= f.text_field :shipping_address %>
+
+<div class="form-group row">宛名</div>
+    <%= f.text_field :shipping_name %>
+    
+<div class = "row">
+    <%= f.submit "変更内容を保存", class: "btn btn-primary" %>
+</div>
+<% end %>
