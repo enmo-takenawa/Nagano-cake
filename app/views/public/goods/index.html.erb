@@ -1,10 +1,16 @@
-<h1>商品一覧</h1>
-全<%= @goods.count %>件
-
-<%#商品一覧表示%>
-  <% @goods.each do |good| %>
-    <%= attachment_image_tag good, :image %>
-    <%= good.name %>
-    ¥<%= good.price %>
-  <% end %>
-  <%= paginate @goods %>
+<div class="row">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-8 offset-md-1">
+    <h1>商品一覧</h1>（全<%= @goods.count %>件）
+    
+    <%#商品一覧表示%>
+      <% @goods.each do |good| %>
+        <%= attachment_image_tag good, :image %>
+        <%= good.name %>
+        ¥<%= good.price %>
+      <% end %>
+      <%= paginate @goods %>
+  
+  </div>
+</div>
