@@ -6,3 +6,5 @@
 #     https: false
 #   )
 # end
+
+Refile.secret_key = '9159d1bec8c2dba0fe5161f73fba83fab578429f0bdc142889aa87f2593a4828e21b1b83d351b6c7e86a8f2e2c280a663180c9192a3004892cebdcbf847660ad'
