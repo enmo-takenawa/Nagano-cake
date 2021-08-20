@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2021_08_18_121754) do
 
   create_table "admins", force: :cascade do |t|
@@ -42,6 +43,7 @@ ActiveRecord::Schema.define(version: 2021_08_18_121754) do
     t.string "postal_code"
     t.string "address"
     t.string "telephone_number"
+    t.boolean "is_deleted", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
