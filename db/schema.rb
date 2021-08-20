@@ -11,7 +11,8 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema.define(version: 2021_08_18_121754) do
+ActiveRecord::Schema.define(version: 2021_08_19_150359) do
+
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,6 +29,9 @@ ActiveRecord::Schema.define(version: 2021_08_18_121754) do
   create_table "cart_items", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
+    t.integer "quantity"
+    t.integer "goods_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -87,6 +91,7 @@ ActiveRecord::Schema.define(version: 2021_08_18_121754) do
     t.integer "order_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
   end
 
   create_table "renres", force: :cascade do |t|
@@ -101,6 +106,7 @@ ActiveRecord::Schema.define(version: 2021_08_18_121754) do
     t.text "shipping_address", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
   end
 
 end

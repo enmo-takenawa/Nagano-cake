@@ -7,5 +7,8 @@ class CartItem < ApplicationRecord
     belongs_to :customer
     belongs_to :goods
     
+    def total_price
+        good.price * quantity
+    end
 
 end
