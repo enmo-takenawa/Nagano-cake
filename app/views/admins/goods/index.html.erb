@@ -21,7 +21,7 @@
       <tr>
         <td><%= good.id %></td>
         <td>
-          <%= link_to good_path(good) do %>
+          <%= link_to admins_good_path(good.id) do %>
             <%= good.name %> <!--商品詳細ページへのリンク-->
           <% end %>
         </td>

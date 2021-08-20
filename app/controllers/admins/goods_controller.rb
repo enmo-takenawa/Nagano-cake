@@ -20,6 +20,7 @@ class Admins::GoodsController < ApplicationController
 
   def edit
     @good = Good.find(params[:id])
+    @genres = Genre.all
   end
 
   def update

@@ -3,7 +3,7 @@
     <div class='col-md-3'>
       <h2>商品詳細</h2>
       <table class='table'>
-        <%= attachment_image_tag(@good.image_id, :profile_image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150") %>
+        <%= attachment_image_tag(@good, :image, fallback: "no_image.jpg", size:"200x150") %>
       </table>
     </div>
     <div class='col-md-3'>
@@ -26,7 +26,11 @@
         </tr>
         <tr>
           <th>販売ステータス</th>
-          <th><%= @good.sales_status %></th>
+          <% if @good.sales_status == false %>
+            <th>販売中</th>
+          <% else %>
+            <th>販売停止中</th>
+          <% end %>
         </tr>
       </table>
       <div class='row'>
