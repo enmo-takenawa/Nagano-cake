@@ -1,0 +1,34 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-8 offset-md-1'>
+      <h2>注文履歴一覧</h2>
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>購入個数</th>
+            <th>購入ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @ordered_goods.each do |ordered| %>
+            <tr>
+              <td><%= l ordered.created_at %></td>
+              <td><%= ordered.orders.customer.last_name %><%= ordered.orders.customer.first_name %></td>
+              <td><%= ordered. quantity%></td>
+              <td><%= ordered.order_status %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class='container mt-5'>
+        <div class='row'>
+          <div class='mx-auto'>
+            <p><%= paginate @books %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
