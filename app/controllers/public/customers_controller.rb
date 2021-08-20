@@ -8,13 +8,10 @@ class Public::CustomersController < ApplicationController
   
   def unsubscribe
     @customer = Customer.find_by(name: params[:name])
-  end
-  
-  def withdraw
-    @customer = Customer.find_by(name: params[:name])
     @user.update(is_valid: false)
     resent_session
     redirect_to root_path
   end
-
+  
+  
 end
