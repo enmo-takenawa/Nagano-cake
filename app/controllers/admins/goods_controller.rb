@@ -1,6 +1,6 @@
 class Admins::GoodsController < ApplicationController
   def index
-    @goods = Good.all
+    @goods = Good.all.page(params[:page]).per(10)
   end
 
   def new
