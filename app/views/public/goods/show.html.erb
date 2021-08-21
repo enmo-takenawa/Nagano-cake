@@ -1,11 +1,18 @@
-<h2>商品詳細</h2>　<%#開発用見出し、実装時には消す%>
 
-<%= attachment_image_tag @good, :image %>
-<%= @good.name %>
-¥<%= @good.price %>（税込）
-
-<%= form_with model:cart_item, local: true do |f| %>
-  <%= f.hidden_field :good_id, value: @good.id %>
-  <%= f.select :quantity, options_for_select((1..20).to_a), include_blank: "個数選択" %>
-  <%= f.submit "カートに入れる" %>
-<% end %>
+<main>
+   <div class="container">
+      <div class="row">
+         <div class="col">
+            <%= form_with model: @cart_item, url:cart_items_path, local:true do |f| %>
+               <%= attachment_image_tag @good, :image, size: "450x250" %><br>
+               <%= @good.name%><br>
+               <%= @good.introduction%><br>
+               ￥<%= @good.price.to_s(:delimited)%>(税込)<br>
+               <%= f.hidden_field :good_id, value: @good.id %><br>
+               <%= f.select :quantity, [[ 1, 1], [2, 2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8]], include_blank: "個数選択" %><br>
+               <%= f.submit 'カートに入れる',class:"btn btn-success"%><br>
+            <% end %>
+         </div>
+      </div>
+   </div>
+</main>
