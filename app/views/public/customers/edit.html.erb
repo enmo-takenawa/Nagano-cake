@@ -6,16 +6,16 @@
 <div class="form-group">
     <%= f.label :氏名, class: "border border-dark" %>
     <div class="row">
-        <%= f.text_field :first_name %>
         <%= f.text_field :last_name %>
+        <%= f.text_field :first_name %>
     </div>
 </div>
 
 <div class="from-group">
      <% f.label :カナ, class: "border border-dark" %>
     <div class="row">
-        <%= f.text_field :first_name_kana %>
         <%= f.text_field :last_name_kana %>
+        <%= f.text_field :first_name_kana %>
     </div>
 </div>
 
@@ -46,5 +46,5 @@
 </div>
 
 <div class="row">
-    <%= link_to "退会する" , unsubscribe_customer_path(@customer), class: "btn btn-denger" %>
+    <%= link_to "退会する" , customers_unsubscribe_path(@customer), class: "btn btn-denger" %>
 </div>
