@@ -26,8 +26,8 @@
           <th>注文ステータス</th>
           <th>
             <%= form_with model: @order,  local: true do |f| %>
-            <%= = f.select :prefecture, Order.prefectures.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
-            <%= f.submit "更新" %>
+              <%= = f.select :prefecture, Order.prefectures.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
+              <%= f.submit "更新" %>
             <% end %>
           </th>
         </tr>
@@ -55,7 +55,12 @@
               <td><%=  %></td>
               <td><%=  %></td>
               <td><%=  %></td>
-              <td><%=  %></td>
+              <td>
+                <%= form_with model: @order,  local: true do |f| %>
+                  <%= = f.select :prefecture, Order.prefectures.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
+                  <%= f.submit "更新" %>
+                <% end %>
+              </td>
             </tr>
         </tbody>
       </table>
