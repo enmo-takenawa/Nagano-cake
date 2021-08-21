@@ -27,7 +27,12 @@
         </td>
         <td><%= good.price %></td>
         <td><%= good.genre.name %></td>
-        <td><%= good.sales_status %></td>
+        <td>
+          <% if good.sales_status == false %>
+            <th>販売中</th>
+          <% else %>
+            <th>販売停止中</th>
+          <% end %>></td>
       </tr>
     <% end %>
   </tbody>
