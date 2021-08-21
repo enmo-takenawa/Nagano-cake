@@ -1,0 +1,85 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-8 offset-md-1'>
+      <h2>注文履歴詳細</h2>
+      <table class='table'>
+        <tr>
+          <th>購入者</th>
+          <th>
+            <%= link_to @order.customers.last_nname, admins_customer(@order.customers) %>
+            <%= link_to @order.customers.first_nname, admins_customer(@order.customers) %>
+          </th>
+        </tr>
+        <tr>
+      	  <th>購入日</th>
+      	  <th><%= @order.created_at.strftime('%Y/%m/%d') %></th>
+        </tr>
+        <tr>
+      	  <th>配送先</th>
+      	  <th><%= @order.shipping_address %></th>
+        </tr>
+        <tr>
+          <th>支払い方法</th>
+          <th><%= @order.payment_method %></th>
+        </tr>
+        <tr>
+          <th>注文ステータス</th>
+          <th>
+            <%= form_with model: @order,  local: true do |f| %>
+              <%= = f.select :prefecture, Order.prefectures.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
+              <%= f.submit "更新" %>
+            <% end %>
+          </th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-8 offset-md-1'>
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td><%=  %></td>
+              <td><%=  %></td>
+              <td><%=  %></td>
+              <td><%=  %></td>
+              <td>
+                <%= form_with model: @order,  local: true do |f| %>
+                  <%= = f.select :prefecture, Order.prefectures.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
+                  <%= f.submit "更新" %>
+                <% end %>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <tbody>
+        <tr>
+            <td>商品合計</td>
+            <td><%= @order.total_price %></td>
+        </tr>
+        <tr>
+            <td>配送料</td>
+            <td><%= @order.shipping_fee %></td>
+        </tr>
+        <tr>
+            <td>ご請求額</td>
+            <td><%= @order.total_price + @order.shipping_fee %></td>
+        </tr>
+    </tbody>
+</div>
