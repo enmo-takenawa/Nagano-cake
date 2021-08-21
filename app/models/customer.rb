@@ -6,5 +6,5 @@ class Customer < ApplicationRecord
          
   has_many :shipping_address
   has_many :orders, through: :ordered_goods
-  
+
 end
