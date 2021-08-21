@@ -6,8 +6,8 @@
         <tr>
           <th>購入者</th>
           <th>
-            <%= link_to @order.customers.last_nname, admins_customer(@order.customers.id) %>
-            <%= link_to @order.customers.first_nname, admins_customer(@order.customers.id) %>
+            <%= link_to @order.customers.last_nname, admins_customer(@order.customers) %>
+            <%= link_to @order.customers.first_nname, admins_customer(@order.customers) %>
           </th>
         </tr>
         <tr>
@@ -51,10 +51,11 @@
         </thead>
         <tbody>
             <tr>
-              <td><%= l @user.created_at %></td>
-              <td><%= @user.name %></td>
-              <td><%= @user.name %></td>
-              <td><%= @user.name %></td>
+              <td><%=  %></td>
+              <td><%=  %></td>
+              <td><%=  %></td>
+              <td><%=  %></td>
+              <td><%=  %></td>
             </tr>
         </tbody>
       </table>
