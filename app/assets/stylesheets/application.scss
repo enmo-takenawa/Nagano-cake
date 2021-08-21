@@ -14,3 +14,17 @@
  *= require_self
  */
 @import "bootstrap";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #6c6b6b;
+}
+
+
+.top-overlay{
+  padding: 0;
+  text-align: center;
+  background-color: (0,0,0,0,5);
+}
