@@ -1,44 +1,51 @@
 <%#配送先新規登録と一覧表示%>
+<div class="container my-5">
+    <div class="row">
+        <div class="offset-1">
 
 <h2 class="border">配送先登録/一覧</h2>
+</div>
+</div>
 
+<div class="row my-3">
+    <div class="offset-2 col-3">
+<%= form_with model: @shipping_address_new do |f| %>
 
-<div class="row">
-<%= form_with model: shipping_addresses.new do |f| %>
-<tr class="form-group row">
+<div class="form-group row">
     
     <td>郵便番号（ハイフンなし）</td>
     <td><%= f.text_field :shipping_postal_code, class: "form-control", placeholder: "0000000" %></td>
-</tr>
+</div>
 
-<tr class="form-group row">
+<div class="form-group row">
     <td>住所</td>
-    <td><%= f.text_field :shipping_address, class: "form-control", placeholder: "住所"　%></td>
-</tr>
+    <td><%= f.text_field :shipping_address, class: "form-control", placeholder: "住所" %></td>
+</div>
 
-<tr class="form-group row">
+<div class="form-group row">
     <td>宛名</td>
-    <td><%= f.text_field :shipping_name, class: "form-control", placeholder: "田中太郎" %></td>
-</tr>
+    <td><%= f.text_field :shipping_name, class: "form-control", placeholder: "令和道子" %></td>
+</div>
 <div class = "row">
-    <%= f.submit "新規登録", class: "btn btn-primary" %>
+    <%= f.submit "新規登録", class: "btn btn-success" %>
 </div>
 <% end %>
 </div>
 
-<%#一覧表示///////////////////////////////////////////////////////////////////////%>
-<div class = "row">
+<%#配送先一覧表示///////////////////////////////////////////////////////////////////////%>
+<div class = "offset-1 col-6">
 <table class = "table-borderless table-hover">
     <thead>
-        <tr class = "border">
+        <tr class = "red-border">
             <th>郵便番号</th>
             <th>住所</th>
             <th>宛名</th>
         </tr>
     </thead>
+    
     <tbody>
-        <% @shipping_address.each do |shipping_address| %>
-        <tr class = "border">
+        <% @shipping_addresses.each do |shipping_address| %>
+        <tr class = "brown-border">
             <td><%= shipping_address.shipping_postal_code %></td>
             <td><%= shipping_address.shipping_address %></td>
             <td><%= shipping_address.shipping_name %></td>
@@ -46,6 +53,6 @@
                 <%= link_to "削除する", shipping_address_path(shipping_address), method: :deleat, data: {confirm: "本当に削除しますか？"}, class: "btn btn-denger" %>
             </td>
         </tr>
+        <% end %>
     </tbody>
 </table>
-</div>
