@@ -8,6 +8,4 @@ class ShippingAddress < ApplicationRecord
     validates :shipping_address, presence: true
     
     belongs_to :customer
-    
-    
 end
