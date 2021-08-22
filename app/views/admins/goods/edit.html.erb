@@ -7,7 +7,7 @@
       <%= form_with model: @good, url:admins_good_path(@good.id), local: true do |f| %>
         <table>
           <tr>
-            <th class="text-dark" width="330" height="50">商品画像</th>
+            <th class="text-dark" height="50">商品画像</th>
             <td><%= f.attachment_field :image %></td>
           </tr>
           <tr>

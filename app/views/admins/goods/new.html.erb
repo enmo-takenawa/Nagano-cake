@@ -1,40 +1,45 @@
-  <div class="container">
-    <div class="row">
-      <div class="">
-        <h2>商品新規登録</h2>
-      </div>
-    </div>
-    <%= form_with model: @good, url: admins_goods_path, local: true do |f| %>
-      <div class="form-group row">
-        <%= f.label "商品画像", class:"" %>
-        <%= f.attachment_field :image, class:"" %>
-      </div>
-      <div class="form-group row">
-        <%= f.label "商品名", class:"" %>
-        <%= f.text_field :name, class:"", placeholder: "商品名" %>
-      </div>
-      <div class="form-group row">
-        <%= f.label "商品説明", class:"" %>
-        <%= f.text_field :introduction, class:"", placeholder: "ここに説明文を記載します" %>
-      </div>
-      <div class="form-group row">
-        <%= f.label "ジャンル", class:"" %>
-        <%= f.collection_select :genre_id, @genres.all, :id, :name, {prompt:"--選択してください--"}, class: "form-control", style: "" %>
-      </div>
-      <div class="form-group row">
-        <%= f.label "税抜価格", class:"" %>
-        <%= f.text_field :price, class:"", placeholder: "1000" %><span class="">円</span>
-      </div>
-      <div class="form-group row">
-        <%= f.label "販売ステータス" %>
-        <%= f.radio_button :sales_status, false %>
-        <%= f.label :sales_status, "販売中" %>
-        <%= f.radio_button :sales_status, true  %>
-        <%= f.label :sales_status, "売切れ" %>
-      </div>
-
-      <div class="form-group text-center btn-lg">
-        <%= f.submit "新規登録", class:"btn btn-success", style:"" %>
-      </div>
-    <% end %>
+<div class="container">
+  <div class="row mt-4 ml-5">
+    <h4 class="bg-light text-dark">商品新規登録</h4>
   </div>
+  <div class="row mt-4">
+    <div class='col-md-5 mx-auto'>
+      <%= form_with model: @good, url: admins_goods_path, local: true do |f| %>
+        <table>
+          <tr>
+            <th class="text-dark" height="50">商品画像</th>
+            <td><%= f.attachment_field :image %></td>
+          </tr>
+           <tr>
+            <th class="text-dark" height="50">商品名</th>
+            <td><%= f.text_field :name, class:"", placeholder: "商品名" %></td>
+          </tr>
+          <tr>
+            <th class="text-dark" height="50">商品説明</th>
+            <td><%= f.text_field :introduction, class:"", placeholder: "ここに説明文を記載します" %></td>
+          </tr>
+          <tr>
+            <th class="text-dark" height="50">ジャンル</th>
+            <td><%= f.collection_select :genre_id, @genres.all, :id, :name, {prompt:"--選択してください--"}, class: "form-control", style: "" %></td>
+          </tr>
+          <tr>
+            <th class="text-dark" height="50">税抜価格</th>
+            <td><%= f.text_field :price, class:"", placeholder: "1000" %><span>円</span></td>
+          </div>
+          <tr>
+            <th class="text-dark" height="50">販売ステータス</th>
+            <td>
+              <%= f.radio_button :sales_status, false %>
+              <%= f.label :sales_status, "販売中" %>
+              <%= f.radio_button :sales_status, true %>
+              <%= f.label :sales_status, "売切れ" %>
+            </td>
+          </tr>
+        </table>
+        <div class="form-group text-center btn-lg">
+          <%= f.submit "新規登録", class:"btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
