@@ -9,42 +9,42 @@
       <table class="mt-4">
         <tr>
           <th class="text-dark">会員ID</th>
-          <th class="text-dark"><%= @customer.id %></th>
+          <td class="text-dark"><%= @customer.id %></td>
         </tr>
         <tr>
           </div>
           <th class="text-dark">氏名</th>
-          <th class="text-dark"><%= @customer.last_name + " " + @customer.first_name %></th>
+          <td class="text-dark"><%= @customer.last_name + " " + @customer.first_name %></td>
         </tr>
         <tr>
           <th class="text-dark">フリガナ</th>
-          <th class="text-dark"><%= @customer.last_name_kana + " " + @customer.first_name_kana %></th>
+          <td class="text-dark"><%= @customer.last_name_kana + " " + @customer.first_name_kana %></td>
         </tr>
         <tr>
           <th class="text-dark">郵便番号</th>
-          <th class="text-dark"><%= @customer.postal_code %></th>
+          <td class="text-dark"><%= @customer.postal_code %></td>
         </tr>
         <tr>
           <th class="text-dark">住所</th>
-          <th class="text-dark"><%= @customer.address %></th>
+          <td class="text-dark"><%= @customer.address %></td>
         </tr>
         <tr>
           <th class="text-dark">電話番号</th>
-          <th class="text-dark"><%= @customer.telephone_number %></th>
+          <td class="text-dark"><%= @customer.telephone_number %></td>
         </tr>
         <tr>
           <th class="text-dark">メールアドレス</th>
-          <th class="text-dark"><%= @customer.email %></th>
+          <td class="text-dark"><%= @customer.email %></td>
         </tr>
         <tr>
           <th class="text-dark">会員ステータス</th>
-          <th>
+          <td>
             <% if @customer.is_deleted == true %>
               <div class="text-success">有効</div>
             <% else %>
               <div class="text-secondary">退会</div>
             <% end %>
-          </th>
+          </td>
         </tr>
       </table>
     </div>
