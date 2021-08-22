@@ -5,20 +5,22 @@ Rails.application.routes.draw do
 
   devise_for :customers, controllers: {
     sessions: 'public/devise/sessions'
-  } 
-  
+  }
+
 
   scope module: :public do
     root to: 'homes#top'
     get 'home/about' => 'homes#about'
-  
+
     resources :customers, only: [:edit, :show, :update]
+
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer' #退会画面へ遷移
     patch '/customers/:id/unsubscribe' => 'customers#switch', as: 'unsubscribe_switch_customer' #会員ステータス切り替え
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
     resources :shipping_addresses
     resources :goods, only: [:index, :show]
     resources :cart_items
-    delete 'cart_items' => 'cart_items#destroy_all'
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :orders do
       collection do
         post 'confirmation'

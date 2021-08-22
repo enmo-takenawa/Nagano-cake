@@ -1,34 +1,49 @@
-<h2>商品一覧</h2>
-
-<div>
-  <%= link_to new_admins_good_path do %> <!--十字架ボタン（商品作成ページへ）-->
-    <button>+</button>
-  <% end %>
-</div>
-
-<table class="">
-  <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @goods.each do |good| %>
-      <tr>
-        <td><%= good.id %></td>
-        <td>
-          <%= link_to admins_good_path(good.id) do %>
-            <%= good.name %> <!--商品詳細ページへのリンク-->
-          <% end %>
-        </td>
-        <td><%= good.price %></td>
-        <td><%= good.genre.name %></td>
-        <td><%= good.sales_status %></td>
-      </tr>
+<div class="container px-5 px-sm-0">
+  <div class="row mt-4 ml-4">
+    <h4 class="bg-light text-dark">商品一覧</h4>
+    <%= link_to new_admins_good_path do %> <!--十字架ボタン（商品作成ページへ）-->
+      <i class="fas fa-plus-circle fa-2x"></i>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <div class="row mt-4">
+      <div class='col-md-8 mx-auto'>
+        <table class="table table-hover table-inversey">
+          <thead class="bg-light">
+            <tr>
+              <th>商品ID</th>
+              <th>商品名</th>
+              <th>税抜価格</th>
+              <th>ジャンル</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @goods.each do |good| %>
+              <tr>
+                <td class="text-dark"><%= good.id %></td>
+                <td>
+                  <%= link_to admins_good_path(good.id) do %>
+                    <%= good.name %> <!--商品詳細ページへのリンク-->
+                  <% end %>
+                </td>
+                <td class="text-dark"><%= good.price %></td>
+                <td class="text-dark"><%= good.genre.name %></td>
+                <% if good.sales_status == false %>
+                  <td class="text-success">販売中</td>
+                <% else %>
+                  <td class="text-secondary">販売停止中</td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <div class='container mt-5'>
+          <div class='row'>
+            <div class='mx-auto'>
+              <p><%= paginate @goods %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

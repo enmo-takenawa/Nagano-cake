@@ -1,7 +1,7 @@
 class Admins::OrdersController < ApplicationController
   
   def index
-    @ordered_goods =Ordered_goods.all.page(params[:page]).per(10)
+    @ordered_goods =Order.all.page(params[:page]).per(10)
   end
 
   def show
@@ -11,6 +11,8 @@ class Admins::OrdersController < ApplicationController
 
   def updated
     @order = Order.find(params[:id])
+    @order.update
+    redirect_to admins_order_path(@order.id)
   end
   
   private
