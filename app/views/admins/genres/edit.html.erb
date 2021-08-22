@@ -1,12 +1,20 @@
-<main>
-  <h1>ジャンル変更</h1>
-  <%= form_with model:@genre, local:true do |f| %>
-    <div class="form-group">
-      <p>ジャンル</p>
-      <%= f.text_field :name %>
+<div class="container">
+  <div class="row mt-4 ml-4">
+    <h4 class="bg-light text-dark">ジャンル編集</h4>
+  </div>
+  <div class="row mt-4">
+    <div class='col'>
+      <%= form_with model:@genre, url:admins_genre_path(@genre.id), local:true do |f| %>
+      <table>
+        <tbody>
+          <tr>
+            <td class="text-dark" width="100">ジャンル名</td>
+            <td width="200"><%= f.text_field :name %></td>
+            <td><%= f.submit "変更を保存", class:"btn btn-success" %></td>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
     </div>
-    <div class="form-group">
-      <p><%= f.submit "変更を保存" %></p>
-    </div>
-  <% end %>
-</main>
+  </div>
+</div>

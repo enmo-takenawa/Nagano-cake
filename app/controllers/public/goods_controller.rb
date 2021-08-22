@@ -6,5 +6,6 @@ class Public::GoodsController < ApplicationController
   
   def show
     @good = Good.find(params[:id])
+    @cart_item = CartItem.new
   end
 end
