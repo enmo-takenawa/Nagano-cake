@@ -39,5 +39,5 @@ class Public::ShippingAddressController < ApplicationController
   def shipping_address_params
     params.require(:shipping_address).parmit(:last_name, :first_name, :postal_code, :address)
   
-end
+  end
 end
