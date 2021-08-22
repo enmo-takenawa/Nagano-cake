@@ -2,87 +2,58 @@
   <div class="row mt-4 ml-5">
     <h4 class="bg-light text-dark ml-5"><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h4>
   </div>
-
-<div class="row">
-  <div class='col-md-8 mx-auto'>
-    <%= form_with model: @customer, url: admins_customer_path(@customer.id), local: true do |f| %>
-      <div class="form-grop">
-        <div class="">
-          会員ID
+  <div class="row mt-4">
+    <div class='col-md-5 mx-auto'>
+      <%= form_with model: @customer, url: admins_customer_path(@customer.id), local: true do |f| %>
+        <table>
+          <tr>
+            <th class="text-dark" width="150" height="50">会員ID</th>
+            <td><%= @customer.id %></td>
+          </tr>
+          <tr>
+            <th class="text-dark" height="50">氏名</th>
+            <td>
+              <%= f.text_field :last_name %>
+              <%= f.text_field :first_name %>
+            </td>
+          </tr>
+          <tr>
+            <th class="text-dark" height="50">フリガナ</th>
+            <td>
+              <%= f.text_field :last_name_kana %>
+              <%= f.text_field :first_name_kana %>
+            </td>
+          </tr>
+          <tr>
+            <th class="text-dark" height="50">郵便番号</th>
+            <td><%= f.text_field :postal_code %></td>
+          </tr>
+          <tr>
+            <th class="text-dark" height="50">住所</th>
+            <td><%= f.text_field :address %></td>
+          </tr>
+          <tr>
+            <th class="text-dark" height="50">電話番号</th>
+            <td><%= f.text_field :telephone_number %></td>
+          </tr>
+          <tr>
+            <th class="text-dark" height="50">メールアドレス</th>
+            <td><%= f.text_field :email %></td>
+          </tr>
+          <tr>
+            <th class="text-dark" height="50">会員ステータス</th>
+            <td>
+              <%= f.radio_button :is_deleted, true %>
+              <%= f.label :is_deleted, "有効" %>
+              <%= f.radio_button :is_deleted, false  %>
+              <%= f.label :is_deleted, "退会" %>
+            </td>
+          </tr>
+        </table>
+        <div class="form-group text-center mr-5">
+          <%= f.submit "変更を保存", class: "btn btn-success" %>
         </div>
-        <div class="">
-          <%= @customer.id %>
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <div class="">
-          氏名
-        </div>
-        <div class="">
-          <%= f.text_field :last_name, class: "" %>
-          <%= f.text_field :first_name, class: "" %>
-        </div>
-      </div>
-      
-      <div class="from-group">
-        <div class="">
-          フリガナ
-        </div>
-        <div class="">
-          <%= f.text_field :last_name_kana, class: "" %>
-          <%= f.text_field :first_name_kana, class: "" %>
-        </div>
-      </div>
-      
-      <div class="from-group">
-        <div class="">
-          郵便番号
-        </div>
-        <div>
-          <%= f.text_field :postal_code, class: "" %>
-        </div>
-      </div>
-      
-      <div class="from-group">
-        <div class="">
-          住所
-        </div>
-        <div class="">
-          <%= f.text_field :address, class: "" %>
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <div class="">
-          電話番号
-        </div>
-        <div class="">
-          <%= f.text_field :telephone_number, class: "" %>
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <div class="">
-          メールアドレス
-        </div>
-        <div class="">
-          <%= f.text_field :email, class: "" %>
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <div class="">
-          会員ステータス  
-        </div>
-        <div class="">
-          <%= f.radio_button :is_deleted, true %>
-          <%= f.label :is_deleted, "有効" %>
-          <%= f.radio_button :is_deleted, false  %>
-          <%= f.label :is_deleted, "退会" %>
-        </div>
-        <%= f.submit "変更を保存", class: "btn btn-success" %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
