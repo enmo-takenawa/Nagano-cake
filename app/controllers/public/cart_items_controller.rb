@@ -6,7 +6,7 @@ class Public::CartItemsController < ApplicationController
 
   def update
     cart_items = current_customer.cart_items
-    cart_item = cart_items.find_by(good_id: params[:cart_item][:good_id])
+    cart_item = cart_items.find_by(good_id: params[:cart_item][:goods_id])
     cart_item.update(cart_item_params)
     redirect_to cart_items_path
   end
@@ -26,7 +26,7 @@ class Public::CartItemsController < ApplicationController
       @cart_item.save
       redirect_to cart_items_path
     else
-      @good = Good.find(params[:cart_item][:good_id])
+      @good = Good.find(params[:cart_item][:goods_id])
       render ("public/goods/show")
     end
   end
@@ -42,10 +42,10 @@ class Public::CartItemsController < ApplicationController
     cart_items.destroy_all
     redirect_to cart_items_path
   end
-  
+
   private
-  def car_item_params
-    params.require(:cart_item).permit(:good_id, :quantity)
+  def cart_item_params
+    params.require(:cart_item).permit(:goods_id, :quantity)
   end
 
 end

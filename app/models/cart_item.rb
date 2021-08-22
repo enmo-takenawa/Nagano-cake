@@ -1,10 +1,8 @@
 class CartItem < ApplicationRecord
+  #商品が0の状態で保存変更されるのを防止
+  #↓このバリデーションは時間あれば実装する。
+  #validates :quantity, presence: true
 
-    #商品が0の状態で保存変更されるのを防止
-    #↓このバリデーションは時間あれば実装する。
-    #validates :quantity, presence: true
-
-    belongs_to :customer
-    belongs_to :good
-
+  belongs_to :good
+  belongs_to :customer
 end
