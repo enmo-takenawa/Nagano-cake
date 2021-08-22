@@ -8,36 +8,36 @@
     <div class="col-m-3">
       <table class="mt-4">
         <tr>
-          <th class="text-dark">会員ID</th>
+          <th class="text-dark" width="170" height="40">会員ID</th>
           <td class="text-dark"><%= @customer.id %></td>
         </tr>
         <tr>
           </div>
-          <th class="text-dark">氏名</th>
+          <th class="text-dark" height="40">氏名</th>
           <td class="text-dark"><%= @customer.last_name + " " + @customer.first_name %></td>
         </tr>
         <tr>
-          <th class="text-dark">フリガナ</th>
+          <th class="text-dark" height="40">フリガナ</th>
           <td class="text-dark"><%= @customer.last_name_kana + " " + @customer.first_name_kana %></td>
         </tr>
         <tr>
-          <th class="text-dark">郵便番号</th>
+          <th class="text-dark" height="40">郵便番号</th>
           <td class="text-dark"><%= @customer.postal_code %></td>
         </tr>
         <tr>
-          <th class="text-dark">住所</th>
+          <th class="text-dark" height="40">住所</th>
           <td class="text-dark"><%= @customer.address %></td>
         </tr>
         <tr>
-          <th class="text-dark">電話番号</th>
+          <th class="text-dark" height="40">電話番号</th>
           <td class="text-dark"><%= @customer.telephone_number %></td>
         </tr>
         <tr>
-          <th class="text-dark">メールアドレス</th>
+          <th class="text-dark" height="40">メールアドレス</th>
           <td class="text-dark"><%= @customer.email %></td>
         </tr>
         <tr>
-          <th class="text-dark">会員ステータス</th>
+          <th class="text-dark" height="40">会員ステータス</th>
           <td>
             <% if @customer.is_deleted == true %>
               <div class="text-success">有効</div>
