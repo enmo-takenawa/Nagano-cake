@@ -3,7 +3,7 @@
     <div class="row">
       <h3 class="col">ショッピングカート</h3>
       <div class="col left-3">
-        <%= link_to 'カートを空にする', cart_item_path, method: :delete, class: "btn btn-danger" %>
+        <%= link_to 'カートを空にする', cart_items_destroy_all_path, method: :delete, class: "btn btn-danger" %>
       </div>
       <table class="table table-bordered">
         <tr>
@@ -15,7 +15,7 @@
         </tr>
 
         <% @sum = 0 %>
-          <% @cart_items.each do |cart_item|%>
+          <% @cart_items.each do |cart_item| %>
             <tr>
               <td>
                 <%= attachment_image_tag cart_item.good, :image, size: "150x100", format: 'jpg' %><%= cart_item.good.name%>
