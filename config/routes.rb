@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get 'home/about' => 'homes#about'
   
     resources :customers, only: [:edit, :show, :update]
-    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer' #退会画面へ遷移
     resources :shipping_addresses
     resources :goods, only: [:index, :show]
     resources :cart_items

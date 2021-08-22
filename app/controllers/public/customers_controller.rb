@@ -9,11 +9,19 @@ class Public::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
   end
   
+  def update
+    @customer = Customer.find(params[:id])
+    if @customer.update(customer_params)
+      flash[:success] = "会員情報の更新に成功しました！"
+      redirect_to customer_path(@customer)
+    else
+      render 'edit'
+    end
+  end
+  
   def unsubscribe
-    @customer = Customer.find_by(name: params[:name])
-    @customer.update(is_valid: false)
-    resent_session
-    redirect_to root_path
+    @customer = current_customer
+   
   end
   
   private
