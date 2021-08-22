@@ -30,9 +30,9 @@
                   <%= f.submit '変更',class:"btn btn-success"%>
                 <% end %>
               </td>
-              <% @sum += cart_item.quantity * cart_item.good.price %>
+              <%# @sum += cart_item.quantity * cart_item.good.price %>
               <td>
-                <%= (cart_item.quantity * cart_item.good.price).to_s(:delimited) %>
+                <%= (cart_item.good.price.to_i * cart_item.quantity.to_i * 1.1).round %>
               </td>
               <td>
                 <%=link_to '削除する', cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %>
