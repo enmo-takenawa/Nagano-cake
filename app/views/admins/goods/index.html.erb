@@ -1,9 +1,11 @@
 <div class="container px-5 px-sm-0">
   <div class="row mt-4 ml-4">
     <h4 class="bg-light text-dark">商品一覧</h4>
-    <%= link_to new_admins_good_path do %> <!--十字架ボタン（商品作成ページへ）-->
-      <i class="fas fa-plus-circle fa-2x"></i>
-    <% end %>
+    <div class="col text-right">
+      <%= link_to new_admins_good_path do %> <!--十字架ボタン（商品作成ページへ）-->
+        <i class="fas fa-plus-circle fa-2x"></i>
+      <% end %>
+    </div>
   </div>
   <div class="row mt-4">
       <div class='col mx-auto'>
