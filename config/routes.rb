@@ -15,7 +15,8 @@ Rails.application.routes.draw do
     resources :customers, only: [:edit, :show, :update]
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer' #退会画面へ遷移
     patch '/customers/:id/unsubscribe' => 'customers#switch', as: 'unsubscribe_switch_customer' #会員ステータス切り替え
-    resources :shipping_addresses
+    get 'shipping_addresses/:id' => 'shipping_address#new'
+    resources :shipping_addresses, except: [:new, :edit]
     resources :goods, only: [:index, :show]
     resources :cart_items
     delete 'cart_items' => 'cart_items#destroy_all'
