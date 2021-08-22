@@ -1,29 +1,31 @@
-<div class="container px-5 px-sm-0">
+<div class="container">
   <div class="row mt-4 ml-5">
     <h4 class="bg-light text-dark">商品詳細</h4>
   </div>
   <div class='row mt-5'>
-    <%= attachment_image_tag(@good, :image, fallback: "no_image.jpg", size:"200x150") %>
-    <div class='col-md-3'>
+    <div class="col-md-4">
+      <%= attachment_image_tag(@good, :image, fallback: "no_image.jpg", size:"250x170") %>
+    </div>
+    <div class='col'>
       <table>
         <tr>
-      	  <th class="text-dark">商品名</th>
+      	  <th class="text-dark" width="170" height="40">商品名</th>
       	  <td class="text-dark"><%= @good.name %></td>
         </tr>
         <tr>
-      	  <th class="text-dark">商品説明</th>
+      	  <th class="text-dark" height="40">商品説明</th>
        	  <td class="text-dark"><%= @good.introduction %></td>
         </tr>
         <tr>
-          <th class="text-dark">ジャンル</th>
+          <th class="text-dark" height="50">ジャンル</th>
           <td class="text-dark"><%= @good.genre.name %></td>
         </tr>
         <tr>
-          <th class="text-dark">税込価格<br>(税抜価格)</th>
+          <th class="text-dark" height="50">税込価格<br>(税抜価格)</th>
           <td class="text-dark"><%= @good.price %><span>円</span></td>
         </tr>
         <tr>
-          <th class="text-dark">販売ステータス</th>
+          <th class="text-dark" height="50">販売ステータス</th>
           <% if @good.sales_status == false %>
             <td class="text-success">販売中</td>
           <% else %>
@@ -32,7 +34,9 @@
         </tr>
       </table>
       <div class='row'>
-        <%= link_to '編集する',edit_admins_good_path,class: "btn btn-sm btn-success" %>
+        <div class="col ml-5">
+          <%= link_to '編集する',edit_admins_good_path,class: "btn btn-sm btn-success" %>
+        </div>
       </div>
     </div>
   </div>

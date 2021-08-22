@@ -1,5 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :ensure_correct_customer, {only: [:show, :edit]}
+  before_action :reject_inactive_customer, only: [:create]
   
   def show
     @customer = Customer.find(params[:id])
@@ -21,12 +22,28 @@ class Public::CustomersController < ApplicationController
   
   def unsubscribe
     @customer = current_customer
-   
+  end
+  
+  def switch
+    @customer = Customer.find(params[:id])
+    if @customer.update(is_deleted: false)
+      sign_out current_customer
+    end
+    redirect_to root_path
+  end
+  
+  def reject_inactive_customer
+    @customer = Customer.find_by(name: params[:customer][:email])
+    if @customer
+      if @customer.delete_password?(params[:customer][:password]) && !@customer.is_deleted
+        redirect_to new_customer_session_path
+      end
+    end
   end
   
   private
   def customer_params
-    params.require(:customer).permit(:is_enabled, :last_name, :first_name, :last_name_kana, :first_name_kana,
+    params.require(:customer).permit(:is_deleted, :last_name, :first_name, :last_name_kana, :first_name_kana,
   	                                   :telephone_number, :email, :password, :postal_code, :address)
   end
   def ensure_correct_customer
