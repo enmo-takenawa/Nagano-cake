@@ -30,7 +30,7 @@
                   <%= f.submit '変更',class:"btn btn-success"%>
                 <% end %>
               </td>
-              <%# @sum += cart_item.quantity * cart_item.good.price %>
+              <% @sum += cart_item.quantity * cart_item.good.price %>
               <td>
                 <%= (cart_item.good.price.to_i * cart_item.quantity.to_i * 1.1).round %>
               </td>
