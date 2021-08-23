@@ -16,7 +16,6 @@ Rails.application.routes.draw do
 
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer' #退会画面へ遷移
     patch '/customers/:id/unsubscribe' => 'customers#switch', as: 'unsubscribe_switch_customer' #会員ステータス切り替え
-
     get 'shipping_addresses/:id' => 'shipping_address#new'
     resources :shipping_addresses, except: [:new, :edit]
     get 'customers/unsubscribe' => 'customers#unsubscribe'
