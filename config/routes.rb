@@ -11,21 +11,17 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'home/about' => 'homes#about'
-
+    #会員
     resources :customers, only: [:edit, :show, :update]
-
+    #配送先住所
+    resources :shipping_addresses, only: [:new, :edit, :update, :create, :destroy]
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer' #退会画面へ遷移
     patch '/customers/:id/unsubscribe' => 'customers#switch', as: 'unsubscribe_switch_customer' #会員ステータス切り替え
     get 'shipping_addresses/:id' => 'shipping_address#new'
-    resources :shipping_addresses, except: [:new, :edit]
+    post 'shipping_addresses/:id' => 'shipping_address#create'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     resources :shipping_addresses
     resources :goods, only: [:index, :show]
-    resources :cart_items do
-      collection do
-        delete 'destroy_all'
-      end
-    end
     resources :orders do
       collection do
         post 'confirmation'
