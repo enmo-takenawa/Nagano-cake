@@ -45,7 +45,6 @@ class Public::OrdersController < ApplicationController
         price_include_tax: add_tax_price(cart_item.good.price)
         )
     end
-    binding.pry
     redirect_to success_orders_path
     @cart_items.destroy_all
   end
@@ -56,8 +55,8 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = Order.where(customer_id: current_customer.id).reverse
-    @goods = OrderedGood.select(:good_id)
-    binding.pry
+    @goods = OrderedGood.all
+    #binding.pry
   end
 
   def show

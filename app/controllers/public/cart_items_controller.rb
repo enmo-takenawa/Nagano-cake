@@ -2,7 +2,7 @@ class Public::CartItemsController < ApplicationController
   def index
    #@cart_items = CartItem.new
     @cart_items = current_customer.cart_items
-    
+    #binding.pry
   end
 
   def update
