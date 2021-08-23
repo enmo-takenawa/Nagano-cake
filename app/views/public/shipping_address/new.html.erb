@@ -56,6 +56,7 @@
             <th class="border border-dark"><%= shipping_address.name %></th>
             <td class="border border-dark"><%= link_to "編集する", edit_shipping_address_path(shipping_address), class: "btn btn-success btn-sm"%>
                 <%= link_to "削除する", "/shipping_address/#{shipping_address.id}/destroy", method: :deleat, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger btn-sm"%>
+
             </td>
         </tr>
         <% end %>
