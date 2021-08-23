@@ -39,26 +39,30 @@
 </div>
 
 <%#配送先一覧表示///////////////////////////////////////////////////////////////////////%>
-<div class = "offset-1 col-6">
-<table class = "table-borderless table-hover">
+<div class="offset-1 col-12">
+<table class = "table-bordered">
     <thead>
-        <tr class = "red-border">
-            <th>郵便番号</th>
-            <th>住所</th>
-            <th>宛名</th>
+        <tr class="border border-dark">
+            <th class="border border-dark">郵便番号</th>
+            <th class="border border-dark">住所</th>
+            <th class="border border-dark">宛名</th>
+            <th class="border border-dark">編集/削除</th>
         </tr>
     </thead>
     
     <tbody>
         <% @shipping_addresses.each do |shipping_address| %>
-        <tr class = "brown-border">
-            <td><%= shipping_address.shipping_postal_code %></td>
-            <td><%= shipping_address.shipping_address %></td>
-            <td><%= shipping_address.name %></td>
-            <td><%= link_to "編集する", edit_shipping_address_path(shipping_address), class: "btn btn-primary"%>
-                <%= link_to "削除する", shipping_address_path(shipping_address), method: :deleat, data: {confirm: "本当に削除しますか？"}, class: "btn btn-denger" %>
+        <tr class="border border-dark">
+            <th class="border border-dark"><%= shipping_address.shipping_postal_code %></th>
+            <th class="border border-dark"><%= shipping_address.shipping_address %></th>
+            <th class="border border-dark"><%= shipping_address.name %></th>
+            <td class="border border-dark"><%= link_to "編集する", edit_shipping_address_path(shipping_address), class: "btn btn-success btn-sm"%>
+                <%= link_to "削除する", "/shipping_address/#{shipping_address.id}/destroy", method: :deleat, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger btn-sm"%>
             </td>
         </tr>
         <% end %>
     </tbody>
 </table>
+</div>
+</div>
+</div>
