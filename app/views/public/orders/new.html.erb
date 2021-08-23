@@ -1,9 +1,23 @@
-<%= form_with model: @order, url: confirmation_orders_path, method: :post, local: true do |f| %>
-    <%= f.hidden_field :cutomer_id, value: current_customer.id %>
-    <%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %>
-    <%= f.label :payment_method, "クレジットカード" %>
-    <%= f.radio_button :payment_method, :銀行振込 %>
-    <%= f.label :payment_method, "銀行振込" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 mt-5 m-4 px-4 py-1 text-center">
+      <h2>注文情報入力</h2>
+    </div>
+  </div>
+
+  <%= form_with model: @order, url: confirmation_orders_path, method: :post, local: true do |f| %>
+    <div class="">
+      <h4>支払い方法</h4>
+    </div>
+    <div class="m-1 ml-5">
+      <%= f.hidden_field :cutomer_id, value: current_customer.id %>
+      <%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %>
+      <%= f.label :payment_method, "クレジットカード" %>
+    </div>
+    <div class="m1 ml-5">
+      <%= f.radio_button :payment_method, :銀行振込 %>
+      <%= f.label :payment_method, "銀行振込" %>
+    </div>
     <%= radio_button_tag :address, "1" %>
     <%= label_tag :address, "ご自身の住所",{value: :"1"} %>
   　〒<%= current_customer.postal_code + " " + current_customer.address %>
@@ -21,4 +35,4 @@
     <%= text_field_tag :shipping_name, nil, placeholder: "令和道子" %>
     <%= f.submit "確認画面に進む", class: "btn btn-primary" %>
 <% end %>
-
+</div>
