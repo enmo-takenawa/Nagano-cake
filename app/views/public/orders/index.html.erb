@@ -19,24 +19,24 @@
                 <tr class="border border-dark">
                     <%#注文日%>
                     <td class="align-middle">
-                        <%= order.created_at.strftime("%Y-%m-%d %H:%M") %>
+                        <%= order.created_at.strftime("%Y/%m/%d") %>
                     </td>
 
-                    <% if order.address = ShippingAddress.find(order.address) %>
+                    
                     <%#配送先%>
                     <td class="align-middle">
-                        <%= "〒" + shipping_address.post_code + "  " + shipping_address.address + "  " + shipping_address.first_name + shipping_address.last_name %>
+                        <%= "〒" + order.shipping_postal_code %></br>
+                        <%= order.shipping_address %></br>
+                        <%= order.shipping_name %>
                     </td>
-
-                    <% else %>
+                    
                     <td class="align-middle">
-                        <% order.order_details.each do |f| %>
-                        <%= f.item_name %>
+                        <% @goods.each do |f| %>
+                            <%= f %>
                         <% end %>
                     </td>
-                    <% end %>
-
-                    <td class="align-middle"><%= order.total_price %></td>
+                    
+                    <td class="align-middle"><%= order.total_price %>円</td>
 
                     <tb class="align-middle"><%= order.order_status %></tb>
 
