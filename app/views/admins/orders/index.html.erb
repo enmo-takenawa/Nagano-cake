@@ -9,17 +9,21 @@
           <tr>
             <th class="text-dark">購入日時</th>
             <th class="text-dark">購入者</th>
-            <th class="text-dark">購入個数</th>
-            <th class="text-dark">購入ステータス</th>
+            <th class="text-dark">注文個数</th>
+            <th class="text-dark">注文ステータス</th>
           </tr>
         </thead>
         <tbody>
-          <% @ordered_goods.each do |ordered| %>
+          <% @order.each do |order| %>
             <tr>
-              <td class="text-dark"><%= l ordered.created_at %></td>
-              <td class="text-dark"><%= ordered.orders.customer.last_name %><%= ordered.orders.customer.first_name %></td>
-              <td class="text-dark"><%= ordered. quantity%></td>
-              <td class="text-dark"><%= ordered.order_status %></td>
+              <td class="text-dark">
+                <%= link_to admins_order_path(order.id) do %>
+                  <%= l order.created_at %>
+                <% end %>
+              </td>
+              <td class="text-dark"><%= order.customer.last_name %><%= order.customer.first_name %></td>
+              <td class="text-dark"><%= %></td>
+              <td class="text-dark"><%= order.order_status %></td>
             </tr>
           <% end %>
         </tbody>
@@ -27,7 +31,7 @@
       <div class='container mt-5'>
         <div class='row'>
           <div class='mx-auto'>
-            <p><%= paginate @ordered_goods %></p>
+            <p><%= paginate @order %></p>
           </div>
         </div>
       </div>
