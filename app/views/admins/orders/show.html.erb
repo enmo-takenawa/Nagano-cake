@@ -20,7 +20,10 @@
         </tr>
         <tr>
       	  <th class="text-dark" height="40">配送先</th>
-      	  <td class="text-dark"><%= @order.shipping_address %></td>
+      	  <td class="text-dark">
+      	    〒<%= @order.customer.postal_code %>
+      	    <%= @order.shipping_address %>
+      	    </td>
         </tr>
         <tr>
           <th class="text-dark" height="40">支払い方法</th>
