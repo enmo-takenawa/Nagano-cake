@@ -6,7 +6,7 @@ class Admins::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @goods = @order.ordered_goods #goodsを複数形として扱っています
+    @ordered_goods = OrderedGood.all
   end
 
   def updated
