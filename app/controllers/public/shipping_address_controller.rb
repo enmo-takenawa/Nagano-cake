@@ -13,7 +13,7 @@ class Public::ShippingAddressController < ApplicationController
           redirect_to shipping_address_path
         else
           @shipping_address_new = ShippingAddress.new
-          @shipping_addresses = current_customer.shipping_addresses
+          @shipping_address = current_customer.shipping_address
           render :new
         end
   end
@@ -30,14 +30,14 @@ class Public::ShippingAddressController < ApplicationController
   end
     
   def destroy
-        shipping_address = ShippingAddress
-        shipping_address.destroy
+        @shipping_address = ShippingAddress
+        @shipping_address.destroy
         redirect_to shipping_address_path
   end
   
   private
   def shipping_address_params
-    params.require(:shipping_address).parmit(:last_name, :first_name, :postal_code, :address)
+    params.permit(:name, :shipping_postal_code, :shipping_address)
   
   end
 end
