@@ -15,7 +15,9 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
     
-    cart_item = curre
+    cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:good_id])
+    if cart_item.present?
+      cart_item
     #@cart_items = current_customer.cart_items
     @cart_item.save
     redirect_to cart_items_path
