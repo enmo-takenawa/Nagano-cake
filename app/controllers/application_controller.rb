@@ -1,14 +1,19 @@
 class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
-    
-    
-def after_sign_out_path_for(resource_or_scope)
-    if resource_or_scope == :admin
-      new_admin_session_path
-    else
-      root_path
+
+    def add_tax_price(price)
+      tax = 1.10
+      (price * tax).round
     end
-end
+    helper_method :add_tax_price
+
+  def after_sign_out_path_for(resource_or_scope)
+      if resource_or_scope == :admin
+        new_admin_session_path
+      else
+        root_path
+      end
+  end
 
   private
   def configure_permitted_parameters

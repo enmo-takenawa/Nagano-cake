@@ -23,9 +23,6 @@ Rails.application.routes.draw do
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     resources :shipping_addresses
     resources :goods, only: [:index, :show]
-    resources :cart_items
-    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
-    delete 'shipping_address/:id' => 'shipping_addresses#destroy'
     resources :orders do
       collection do
         post 'confirmation'

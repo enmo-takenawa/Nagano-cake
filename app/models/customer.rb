@@ -5,6 +5,6 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :shipping_address
-  has_many :orders, through: :ordered_goods
+  has_many :orders #through: :ordered_good
   has_many :cart_items
 end
