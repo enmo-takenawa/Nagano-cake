@@ -13,7 +13,6 @@ class Public::OrdersController < ApplicationController
     session[:order] = @order
 
     @cart_items = CartItem.where(customer_id: current_customer.id)
-    #@order = Order.new(payment_method: params[:order][:payment_method])
     @order.shipping_fee = 800
     #送料定義　800円
 
@@ -60,14 +59,14 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @goods = @order.ordered_goods #goodsを複数形として扱っています
+    #@goods = @order.ordered_goods #goodsを複数形として扱っています
     @total_price = 0
   end
 
 
   private
   def order_params
-    params.require(:order).permit(:shipping_postal_code, :shipping_address, :shipping_name, :payment_method, :total_price, :shipping_fee, :order_status) #permitの中身記述途中
+    params.require(:order).permit(:shipping_postal_code, :shipping_address, :shipping_name, :payment_method, :total_price, :shipping_fee, :order_status)
   end
 
 end

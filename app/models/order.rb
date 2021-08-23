@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
-  has_many :customers
-  belongs_to :ordered_goods
+  belongs_to :customer
+  has_many :ordered_goods
 
   validates :shipping_postal_code, presence: true, format: { with: /\A\d{7}\z/ }
   #郵便番号　7桁（ハイフン無し）
