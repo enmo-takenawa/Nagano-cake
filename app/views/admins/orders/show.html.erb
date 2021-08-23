@@ -1,44 +1,44 @@
-<div class='container px-5 px-sm-0'>
-  <div class='row'>
-    <div class='col-md-8 offset-md-1'>
-      <h2>注文履歴詳細</h2>
+<div class="container">
+  <div class="row mt-4 ml-4">
+    <h4 class="bg-light text-dark">注文履歴一覧</h4>
+  </div>
+  <div class="row mt-4">
+    <div class='col'>
       <table class='table'>
         <tr>
           <th>購入者</th>
-          <th>
+          <td>
             <%= link_to @order.customers.last_nname, admins_customer(@order.customers) %>
             <%= link_to @order.customers.first_nname, admins_customer(@order.customers) %>
-          </th>
+          </td>
         </tr>
         <tr>
       	  <th>購入日</th>
-      	  <th><%= @order.created_at.strftime('%Y/%m/%d') %></th>
+      	  <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
       	  <th>配送先</th>
-      	  <th><%= @order.shipping_address %></th>
+      	  <td><%= @order.shipping_address %></td>
         </tr>
         <tr>
           <th>支払い方法</th>
-          <th><%= @order.payment_method %></th>
+          <td><%= @order.payment_method %></td>
         </tr>
         <tr>
           <th>注文ステータス</th>
-          <th>
+          <td>
             <%= form_with model: @order,  local: true do |f| %>
               <%= = f.select :prefecture, Order.prefectures.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
               <%= f.submit "更新" %>
             <% end %>
-          </th>
+          </td>
         </tr>
       </table>
     </div>
   </div>
-</div>
-
-<div class='container px-5 px-sm-0'>
+    
   <div class='row'>
-    <div class='col-md-8 offset-md-1'>
+    <div class='col'>
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
@@ -50,36 +50,38 @@
           </tr>
         </thead>
         <tbody>
-            <tr>
-              <td><%=  %></td>
-              <td><%=  %></td>
-              <td><%=  %></td>
-              <td><%=  %></td>
-              <td>
-                <%= form_with model: @order,  local: true do |f| %>
-                  <%= = f.select :prefecture, Order.prefectures.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
-                  <%= f.submit "更新" %>
-                <% end %>
-              </td>
-            </tr>
+          <tr>
+            <td><%=  goods.nane %></td>
+            <td><%=  goods.price %></td>
+            <td><%= ordered_goods.quantity %></td>
+            <td>
+              <% subtotal_price = (add_tax_price(f.good.price) * f.quantity.to_i) %>
+              <%= subtotal_price.to_s(:delimited, delimiter: ',') %>
+              <% total_price += subtotal_price.to_i %></td>
+            <td>
+              <%= form_with model: @order,  local: true do |f| %>
+                <%= = f.select :prefecture, Order.prefectures.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture' %>
+                <%= f.submit "更新" %>
+              <% end %>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
   </div>
-</div>
-<div class="row">
+  <div class="col">
     <tbody>
-        <tr>
-            <td>商品合計</td>
-            <td><%= @order.total_price %></td>
-        </tr>
-        <tr>
-            <td>配送料</td>
-            <td><%= @order.shipping_fee %></td>
-        </tr>
-        <tr>
-            <td>ご請求額</td>
-            <td><%= @order.total_price + @order.shipping_fee %></td>
-        </tr>
+      <tr>
+        <th>商品合計</th>
+        <td><%= @order.total_price %></td>
+      </tr>
+      <tr>
+        <th>配送料</th>
+        <td><%= @order.shipping_fee %></td>
+      </tr>
+      <tr>
+        <th>ご請求額</th>
+        <td><%= @order.total_price + @order.shipping_fee %></td>
+      </tr>
     </tbody>
-</div>
+  </div>
