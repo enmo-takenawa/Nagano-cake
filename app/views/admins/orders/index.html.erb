@@ -15,6 +15,7 @@
         </thead>
         <tbody>
           <% @ordered_goods.each do |ordered_goods| %>
+          bingin.pry
             <tr>
               <td class="text-dark">
                 <%= link_to admins_order_path(ordered_goods.order) do %>

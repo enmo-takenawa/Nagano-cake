@@ -42,6 +42,7 @@ class Public::OrdersController < ApplicationController
       OrderedGood.create(
         good_id: cart_item.good.id,
         order_id: @order.id,
+        price: @order.total_price,
         quantity: cart_item.quantity,
         price_include_tax: add_tax_price(cart_item.good.price)
         )

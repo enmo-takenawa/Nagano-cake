@@ -19,7 +19,6 @@ Rails.application.routes.draw do
     patch '/customers/:id/unsubscribe' => 'customers#switch', as: 'unsubscribe_switch_customer' #会員ステータス切り替え
     get 'shipping_addresses/:id' => 'shipping_address#new'
     post 'shipping_addresses/:id' => 'shipping_address#create'
-    post 'shipping_address/:id/destroy' => 'shipping_address#destroy'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     resources :shipping_addresses
     resources :goods, only: [:index, :show]

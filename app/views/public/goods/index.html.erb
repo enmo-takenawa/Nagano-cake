@@ -16,13 +16,7 @@
                 <p>￥<%= good.price.to_s(:delimited)%></p>
               </div>
             <% end %>
-            </div>
-      <% @goods.each do |good|%>
-        <div class="col-3 mt-5">
-          <%=link_to good_path(good.id) do%>
-            <%= attachment_image_tag good, :image, fallback: "no_image.jpg", size:"250x150" %>
-            <%= good.name%>
-            ￥<%= good.price.to_s(:delimited)%>
+          </div>
           <% end %>
         </div>
       </div>
