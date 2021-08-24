@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get '/search', to: 'search#search'
+
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   } #管理者ログイン画面へのルーティング
