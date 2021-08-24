@@ -55,7 +55,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = Order.where(customer_id: current_customer.id).reverse
-    @goods = OrderedGood.all
+    @goods = OrderedGood.where(order_id: 7)
     #binding.pry
   end
 

@@ -34,9 +34,7 @@
                             <% @goods.each do |f| %>
                                 <%= order.id %>
                                 <%= f.order_id %>
-                                <% if f.order_id = order.id %>
                                 <%= f.good.name %></br>
-                                <% end %>
                             <% end %>
                         </td>
                         
