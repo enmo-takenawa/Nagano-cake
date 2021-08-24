@@ -15,7 +15,7 @@
 <tr class = "border">
     <tbody>
     <td>注文日</td>
-    <tb><%= @order.created_at("%Y-%m-%d") %></tb>
+    <tb><%= @order.created_at.strftime("%Y-%m-%d %H:%M") %></tb>
 </tr>
 
 <tr class = "border">

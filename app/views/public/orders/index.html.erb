@@ -1,49 +1,53 @@
 <%#注文履歴詳細ページ%>
-
-<h1>注文履歴一覧</h1>
-
-<div class="row">
-        <table class="border border-dark">
-            <thead>
-            <td>注文日</td>
-            <td>配送先</td>
-            <td>注文商品</td>
-            <td>支払金額</td>
-            <td>ステータス</td>
-            <td>注文詳細</td>
-            </thead>
-
-            <%#ここから履歴の数字とかを入れるための記述%>
-            <tbody>
-                <% @orders.each do |order| %>
-                <tr class="border border-dark">
-                    <%#注文日%>
-                    <td class="align-middle">
-                        <%= order.created_at.strftime("%Y-%m-%d %H:%M") %>
-                    </td>
-
-                    <% if order.address = ShippingAddress.find(order.address) %>
-                    <%#配送先%>
-                    <td class="align-middle">
-                        <%= "〒" + shipping_address.post_code + "  " + shipping_address.address + "  " + shipping_address.first_name + shipping_address.last_name %>
-                    </td>
-
-                    <% else %>
-                    <td class="align-middle">
-                        <% order.order_details.each do |f| %>
-                        <%= f.item_name %>
-                        <% end %>
-                    </td>
+<div class="container">
+    <h1>注文履歴一覧</h1>
+    <div class="row">
+        <div class="container-fluid">
+            <table class="table table-bordered">
+                <thead>
+                <td>注文日</td>
+                <td>配送先</td>
+                <td>注文商品</td>
+                <td>支払金額</td>
+                <td>ステータス</td>
+                <td>注文詳細</td>
+                </thead>
+    
+                <%#ここから履歴の数字とかを入れるための記述%>
+                <tbody>
+                    <% @orders.each do |order| %>
+                    <tr class="border border-dark">
+                        <%#注文日%>
+                        <td class="text-center">
+                            <%= order.created_at.strftime("%Y/%m/%d") %>
+                        </td>
+    
+                        
+                        <%#配送先%>
+                        <td class="text-center">
+                            <%= "〒" + order.shipping_postal_code %></br>
+                            <%= order.shipping_address %></br>
+                            <%= order.shipping_name %>
+                        </td>
+                        
+                        <td class="text-center">
+                            <% @goods.each do |f| %>
+                                <%= order.id %>
+                                <%= f.order_id %>
+                                <%= f.good.name %></br>
+                            <% end %>
+                        </td>
+                        
+                        <td class="text-center"><%= order.total_price %>円</td>
+    
+                        <td class="text-center"><%= order.order_status %></td>
+    
+                        <td class="text-center"><%=link_to "表示する",order_path(order), class: "btn btn-primary" %></td>
+    
+                    </tr>
                     <% end %>
-
-                    <td class="align-middle"><%= order.total_price %></td>
-
-                    <tb class="align-middle"><%= order.order_status %></tb>
-
-                    <td class="align-middle"><%=link_to "表示する",order_path(order), class: "btn btn-primary" %></td>
-
-                </tr>
-                <% end %>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+         </div>
     </div>
+</div>
