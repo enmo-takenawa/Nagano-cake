@@ -74,15 +74,15 @@
       <table>
         <tr>
           <th class="text-dark" width="100" height="40">商品合計</th>
-          <td class="text-dark"><%= @order.total_price %><span>円</span></td>
+          <td class="text-dark"><%= @order.total_price.to_s(:delimited) %><span>円</span></td>
         </tr>
         <tr>
           <th class="text-dark" height="40">配送料</th>
-          <td class="text-dark"><%= @order.shipping_fee %><span>円</span></td>
+          <td class="text-dark"><%= @order.shipping_fee.to_s(:delimited) %><span>円</span></td>
         </tr>
         <tr>
           <th class="text-dark" height="40">ご請求額</th>
-          <td class="text-dark"><%= @order.total_price + @order.shipping_fee %><span>円</span></td>
+          <td class="text-dark"><%= @order.total_price + @order.shipping_fee.to_s(:delimited) %><span>円</span></td>
         </tr>
       </table>
     </div>
