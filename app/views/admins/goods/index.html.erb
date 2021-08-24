@@ -28,7 +28,7 @@
                   <%= good.name %> <!--商品詳細ページへのリンク-->
                 <% end %>
               </td>
-              <td class="text-dark"><%= good.price %></td>
+              <td class="text-dark"><%= good.price.to_s(:delimited) %></td>
               <td class="text-dark"><%= good.genre.name %></td>
               <% if good.sales_status == false %>
                 <td class="text-success">販売中</td>
