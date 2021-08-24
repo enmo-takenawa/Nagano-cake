@@ -1,5 +1,5 @@
 class Admins::OrdersController < ApplicationController
-  
+
   def index
     @ordered_goods = OrderedGood.all.page(params[:page]).per(10)
   end
@@ -14,7 +14,7 @@ class Admins::OrdersController < ApplicationController
     @order.update
     redirect_to admins_order_path(@order.id)
   end
-  
+
   private
   def order_params
     params.require(:order).permit(:order_status) #permitの中身記述途中
