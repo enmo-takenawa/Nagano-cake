@@ -9,17 +9,21 @@
           <tr>
             <th class="text-dark">購入日時</th>
             <th class="text-dark">購入者</th>
-            <th class="text-dark">購入個数</th>
-            <th class="text-dark">購入ステータス</th>
+            <th class="text-dark">注文個数</th>
+            <th class="text-dark">注文ステータス</th>
           </tr>
         </thead>
         <tbody>
-          <% @ordered_goods.each do |ordered| %>
+          <% @ordered_goods.each do |ordered_goods| %>
             <tr>
-              <td class="text-dark"><%= l ordered.created_at %></td>
-              <td class="text-dark"><%= ordered.orders.customer.last_name %><%= ordered.orders.customer.first_name %></td>
-              <td class="text-dark"><%= ordered. quantity%></td>
-              <td class="text-dark"><%= ordered.order_status %></td>
+              <td class="text-dark">
+                <%= link_to admins_order_path(ordered_goods.order) do %>
+                  <%= l ordered_goods.created_at %>
+                <% end %>
+              </td>
+              <td class="text-dark"><%= ordered_goods.order.customer.last_name %><%= ordered_goods.order.customer.first_name %></td>
+              <td class="text-dark"><%= ordered_goods.quantity %></td>
+              <td class="text-dark"><%= ordered_goods.order.order_status %></td>
             </tr>
           <% end %>
         </tbody>

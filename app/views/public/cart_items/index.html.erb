@@ -24,13 +24,13 @@
                 <%= cart_item.good.price.to_s(:delimited)%>
               </td>
               <td>
-                <%= form_with model: cart_item, url: cart_item_path(cart_item), local:true do |f| %>
-                  <%= f.hidden_field :goods_id, :value => cart_item.good_id %>
+                <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local:true do |f| %>
+                  <%= f.hidden_field :good_id, :value => cart_item.good_id %>
                   <%= f.select :quantity, [[ 1, 1], [2, 2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8]], prompt: cart_item.quantity %>
                   <%= f.submit '変更',class:"btn btn-success"%>
                 <% end %>
               </td>
-              <% @sum += cart_item.quantity * cart_item.good.price %>
+              <% @sum += cart_item.quantity.to_i * cart_item.good.price.to_i %>
               <td>
                 <%= (cart_item.good.price.to_i * cart_item.quantity.to_i * 1.1).round %>
               </td>
