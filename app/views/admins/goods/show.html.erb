@@ -22,7 +22,7 @@
         </tr>
         <tr>
           <th class="text-dark" height="50">税込価格<br>(税抜価格)</th>
-          <td class="text-dark"><%= @good.price %><span>円</span></td>
+          <td class="text-dark"><%= @good.price.to_s(:delimited) %><span>円</span></td>
         </tr>
         <tr>
           <th class="text-dark" height="50">販売ステータス</th>
