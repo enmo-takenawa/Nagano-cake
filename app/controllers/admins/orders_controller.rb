@@ -6,7 +6,8 @@ class Admins::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @ordered_goods = OrderedGood.find(params[:id])
+    #@ordered_goods = OrderedGood.find(params[:id])
+    @order.shipping_fee = 800
   end
 
   def updated
