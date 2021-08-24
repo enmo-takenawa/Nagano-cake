@@ -14,14 +14,17 @@ Rails.application.routes.draw do
     #会員
     resources :customers, only: [:edit, :show, :update]
     #配送先住所
-    resources :shipping_addresses, only: [:new, :edit, :update, :create, :destroy]
+    resources :shipping_addresses, only: [:new, :update, :create, :destroy]
+    resources :shipping_address, only: [:new, :edit, :update, :create, :destroy]#動作検証のため追加後で消す----------------------------------------------
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer' #退会画面へ遷移
     patch '/customers/:id/unsubscribe' => 'customers#switch', as: 'unsubscribe_switch_customer' #会員ステータス切り替え
     get 'shipping_addresses/:id' => 'shipping_address#new'
-    post 'shipping_addresses/:id' => 'shipping_address#create'
+    post 'shipping_address/:id' => 'shipping_address#create'
     post 'shipping_address/:id/destroy' => 'shipping_address#destroy'
+    get 'shipping_address/:id/edit' => 'shipping_address#edit'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     resources :shipping_addresses
+    resources :shipping_address
     resources :goods, only: [:index, :show]
     resources :cart_items do
       collection do

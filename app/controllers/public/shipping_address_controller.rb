@@ -19,8 +19,7 @@ class Public::ShippingAddressController < ApplicationController
   end
     
   def edit
-        @shipping_address = ShipingAddress.find(params[:id])
-        
+        @shipping_address = ShippingAddress.find(params[:id])
   end
     
   def update
