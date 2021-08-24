@@ -31,10 +31,8 @@
                         </td>
                         
                         <td class="text-center">
-                            <% @goods.each do |f| %>
-                                <%= order.id %>
-                                <%= f.order_id %>
-                                <%= f.good.name %></br>
+                            <<% order.ordered_goods.each do |ordered_good| %>
+                                <%= ordered_good.good.name %></br>
                             <% end %>
                         </td>
                         
