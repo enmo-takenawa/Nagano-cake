@@ -35,17 +35,17 @@ class Public::OrdersController < ApplicationController
   def create
     @order = current_customer.orders.new(order_params)
     @order.save
+    redirect_to success_orders_path
+
     @cart_items = current_customer.cart_items
     @cart_items.each do |cart_item|
-      @goods = OrderedGood.create(
+      OrderedGood.create(
         good_id: cart_item.good.id,
         order_id: @order.id,
         quantity: cart_item.quantity,
-        price: cart_item.good.price,
         price_include_tax: add_tax_price(cart_item.good.price)
         )
     end
-    redirect_to success_orders_path
     @cart_items.destroy_all
   end
 
@@ -55,13 +55,10 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = Order.where(customer_id: current_customer.id).reverse
-    @goods = OrderedGood.where(order_id: 7)
-    #binding.pry
   end
 
   def show
     @order = Order.find(params[:id])
-    
     #@goods = @order.ordered_goods #goodsを複数形として扱っています
     @total_price = 0
   end
