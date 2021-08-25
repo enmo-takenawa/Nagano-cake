@@ -1,7 +1,7 @@
 class Admins::OrdersController < ApplicationController
 
   def index
-    @ordered_goods = OrderedGood.all.page(params[:page]).per(10)
+    @orders = Order.all.page(params[:page]).per(10)
   end
 
   def show
@@ -9,7 +9,7 @@ class Admins::OrdersController < ApplicationController
     #@ordered_goods = OrderedGood.find(params[:id])
     @order.shipping_fee = 800
     @array_order_status = Array.new
-    @array_order_status.push(["入金待ち",0],["入金確認中",1],["製作中",2],["発送準備中",3],["発送済み",4])
+    @array_order_status.push(["入金待ち",0],["入金確認",1],["製作中",2],["発送準備中",3],["発送済み",4])
     @array_ordered_good_production_status = Array.new
     @array_ordered_good_production_status.push(["着手不可",0],["制作待ち",1],["製作中",2],["製作完了",3])
   end
