@@ -22,9 +22,22 @@
   color: #6c6b6b;
 }
 
+.position-relative{
+  position: relative;
+}
+
+
+.position-absolute{
+  position: absolute;
+}
+
+.text-center{
+  text-align: center;
+}
 
 .top-overlay{
-  padding: 0;
-  text-align: center;
-  background-color: (0,0,0,0,5);
+  top: 50%;
+  left: 0;
+  right: 0;
+  background-color: rgba(255,232,225,0.8);
 }

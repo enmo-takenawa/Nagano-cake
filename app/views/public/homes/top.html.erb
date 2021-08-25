@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto">
-      <div class="top">
-        <%= image_tag 'top1.jpg', class: "img-fluid p-5", alt: "Responsive image" %> 
+      <div class="position-relative">
+        <%= image_tag 'top1.jpg', class: "img-fluid" %> 
         <%# https://pixabay.com/ja/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2549453 からの画像 %>
-        <div class="top-overlay">
-          <p>ようこそ、ながのCakeへ！</br>
+        <div class="top-overlay position-absolute text-center">
+          <p class="text-dark mt-3">ようこそ、ながのCakeへ！</br>
           このサイトは、ケーキ販売のECサイトになります。</br>
-          会員でない方も商品の閲覧はできますが、</br>購入には会員登録が必要になります。</p>
+          会員でない方も商品の閲覧はできますが、</br>購入には会員登録が必要になります。
         </div>
       </div>
     
@@ -16,7 +16,7 @@
         <% @goods.each do |good|%>
           <div class="col-sm-6 col-md-4 col-lg-3">
           <%=link_to good_path(good.id) do%>
-            <%= attachment_image_tag good, :image, fallback: "no_image.jpg", size:"250x150" %>
+            <%= attachment_image_tag good, :image, fallback: "no_image.jpg", size: "200x150" %>
             <div>
               <h5><%= good.name%></h5>
               <p>￥<%= good.price.to_s(:delimited)%></p>
