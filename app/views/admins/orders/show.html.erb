@@ -31,9 +31,11 @@
         </tr>
         <tr>
           <th class="text-dark" height="40">注文ステータス</th>
-          <%= form_with model: @order, url: admins_order_path, method: :put, local: true do |f| %>
-          <td class="order-box"><%= f.select :order_status, Order.order_statuses.map { |k, v| [t("orderes.order_status.#{k}"), v] } %></td>
-          <td><%= f.submit "更新", class: "btn btn-success" %></td>
+          <td>
+            <%= form_with model: @order, url: admins_order_path(@order), method: :patch, local: true do |f| %>
+            <%= f.select :order_status, @array_order_status, { selected: Order.order_statuses[@order.order_status] } %>
+            <%= f.submit "更新", class: "btn btn-success" %>
+          </td>
           <% end %>
         </tr>
       </table>
@@ -54,8 +56,8 @@
           </tr>
         </thead>
         <tbody>
+          <% @order.ordered_goods.each do |ordered_good| %>
           <tr>
-            <% @order.ordered_goods.each do |ordered_good| %>
             <td class="text-dark"><%= ordered_good.good.name %></td>
             <td class="text-dark"><%= ordered_good.price %></td>
             <td class="text-dark"><%= ordered_good.quantity %></td>
@@ -63,21 +65,18 @@
               <% subtotal_price = (add_tax_price(ordered_good.good.price) * ordered_good.quantity.to_i) %>
               <%= subtotal_price.to_s(:delimited, delimiter: ',') %>
             </td>
-            <%= form_with model: ordered_good, url: admins_path(ordered_good.id), method: :patch, local: true do |f| %>
-            <td class="text-dark">
-              <%= f.select :production_status, OrderedGood.production_statuses.map { |k, v| [t("ordered_goods.production_status.#{k}"), v] } %>
-            </td>
             <td>
+              <%= form_with model: ordered_good, url: admins_path(order_id: @order.id, id: ordered_good.id), method: :patch, local: true do |f| %>
+              <%= f.select :production_status, @array_ordered_good_production_status, { selected: OrderedGood.production_statuses[ordered_good.production_status] } %>
               <%= f.submit "更新", class: "btn btn-success" %>
+              <% end %>
             </td>
-            <% end %>
-            <% end %>
-
           </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
-    <div class="col ml-5">
+    <div class="col ml-4">
       <table>
         <tr>
           <th class="text-dark" width="100" height="40">商品合計</th>

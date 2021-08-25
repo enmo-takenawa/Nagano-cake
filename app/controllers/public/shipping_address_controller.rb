@@ -1,8 +1,8 @@
 class Public::ShippingAddressController < ApplicationController
   def new
     @shipping_adress_new = ShippingAddress.new
-    @shipping_adress = current_customer.id
-    @shipping_addresses = ShippingAddress.all
+    #@shipping_adress = current_customer.shipping_address
+    @shipping_addresses = current_customer.shipping_addresses
         
   end
     
