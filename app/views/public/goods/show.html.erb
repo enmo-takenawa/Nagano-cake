@@ -13,17 +13,17 @@
                <div class="col-md-6 text-left">
                   <div class="row" style="line-hight: 40px;">
                      <div class="col-md-12" style="font-size: 25px;">
-                       <p><strong><%= @good.name %></strong></p>
+                       <p><strong class="text-dark"><%= @good.name %></strong></p>
                      </div>
                   </div>
                   <div class="row" style="margin-bottom: 30px;">
                      <div class="col-md-12">
-                       <p><%= @good.introduction %></p>
+                       <p class="text-dark"><%= @good.introduction %></p>
                      </div>
                   </div>
                   <div class="row">
                      <div class="col-md-2 text-left">
-                        <h4>￥<%= @good.price.to_s(:delimited)%></h4>
+                        <h4 class="text-dark">￥<%= @good.price.to_s(:delimited)%></h4>
                      </div>
                      <div class="col-md-4 text-left" style="padding-top: 5px;">
                        <P style="font-size: 15px;">（税込）</P>
@@ -43,7 +43,7 @@
                      <% end %>
                   <% else @good.sales_status == true %>
                         <div class="col-md-6 text-left" style="margin-top: 8px;">
-                           <h3>売切れ中</h3>
+                           <h3 class="text-dark">売切れ中</h3>
                         </div>
                   <% end %>
                </div>

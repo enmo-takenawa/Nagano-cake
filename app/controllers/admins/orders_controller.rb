@@ -6,12 +6,18 @@ class Admins::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @ordered_goods = OrderedGood.find(params[:id])
+    #@ordered_goods = OrderedGood.find(params[:id])
+    @order.shipping_fee = 800
   end
 
-  def updated
+  def update
     @order = Order.find(params[:id])
-    @order.update
+    @order.update(order_status: params[:order][:order_status].to_i)
+    if params[:order][:order_status].to_i == 1
+      @order.ordered_goods.update_all(production_status: 1)
+    elsif params[:order][:order_status].to_i == 4
+      @order.ordered_goods.update_all(production_status: 3)
+    end
     redirect_to admins_order_path(@order.id)
   end
 

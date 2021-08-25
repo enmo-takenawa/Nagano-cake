@@ -1,66 +1,60 @@
-<div class="container my-5">
-	<div class="row">
-		<div class="offset-sm-1">
-    <h2>マイページ</h2>
-    </div>
-    </div>
-    <div class="row my-3">
-		<div class="offset-sm-1">
-      <h4>登録情報
-      <%= link_to "編集する",edit_customer_path(@customer),class: "btn btn-success" %></h4>
-      </div>
-      </div>
-
-
-    <%#マイページの登録情報表示%>
-
-	  <div class="offset-sm-1 col-sm-4">
-	    <table class="table table-bordered">
-        <tr class="border border-dark">
-            <th>氏名</th>
-		    	<td>
-		    		<%= @customer.last_name %>
-		    		<%= @customer.first_name %>
-		    	</td>
-	      </tr>
-
-	      <tr class="border border-dark">
-		    	<th>フリガナ</th>
-		    	<td>
-		    		<%= @customer.last_name_kana %>
-		    		<%= @customer.first_name_kana %>
-	    		</td>
-	      </tr>
-
-	      <tr class="border border-dark">
-		    	<th>郵便番号</th>
-		    	<td><%= @customer.postal_code %></td>
-	      </tr>
-
-	      <tr class="border border-dark">
-		    	<th>住所</th>
-		    	<td><%= @customer.address %></td>
-	      </tr>
-
-	      <tr class="border border-dark">
-		    	<th>電話番号</th>
-		    	<td><%= @customer.telephone_number %></td>
-	      </tr>
-
-	      <tr class="border border-dark">
-	    		<th>メールアドレス</th>
-	        <td><%= @customer.email %></td>
-	      </tr>
-    </table>
-    <%#配送先と注文一覧へのリンクボタン作成%>
-
-    <div class="row">
-		 		<td>配送先</td>
-		 		<td><%= link_to "一覧を見る", shipping_address_path, class: "btn btn-primary mx-auto my-1" %></td>
-		 	</div>
-		 	<div class="row">
-				<td>注文履歴</td>
-				<td><%= link_to "一覧を見る", orders_path, class: "btn btn-primary mx-auto my-1" %></td>
-			</div>
-			</div>
-			</div>
+<div class="container">
+	<div class="row mt-4 ml-5">
+    <h4 class="bg-light text-dark">マイページ</h4>
+  </div>
+  
+  <div class="text-dark">
+  	登録情報
+		<%= link_to "編集する",edit_customer_path(@customer),class: "btn btn-success m-2 ml-auto" %>
+  </div>
+  
+	<div class="row mt-3">
+			 <table class="table table-bordered">
+	        <tr class="border border-dark">
+	          <th class="bg-light text-dark">氏名</th>
+			    	<td class="text-dark">
+			    		<%= @customer.last_name %>
+			    		<%= @customer.first_name %>
+			    	</td>
+		      </tr>
+	
+		      <tr class="border border-dark">
+			    	<th class="bg-light text-dark">フリガナ</th>
+			    	<td class="text-dark">
+			    		<%= @customer.last_name_kana %>
+			    		<%= @customer.first_name_kana %>
+		    		</td>
+		      </tr>
+	
+		      <tr class="border border-dark">
+			    	<th class="bg-light text-dark">郵便番号</th>
+			    	<td class="text-dark"><%= @customer.postal_code %></td>
+		      </tr>
+	
+		      <tr class="border border-dark">
+			    	<th class="bg-light text-dark">住所</th>
+			    	<td class="text-dark"><%= @customer.address %></td>
+		      </tr>
+	
+		      <tr class="border border-dark">
+			    	<th class="bg-light text-dark">電話番号</th>
+			    	<td class="text-dark"><%= @customer.telephone_number %></td>
+		      </tr>
+	
+		      <tr class="border border-dark">
+		    		<th class="bg-light text-dark">メールアドレス</th>
+		        <td class="text-dark"><%= @customer.email %></td>
+		      </tr>
+	    </table>
+	</div>
+		
+	<div class="text-dark">
+		配送先　
+		<%= link_to "一覧を見る", shipping_address_path, class: "btn btn-primary btn-sm m-1" %>
+	</div>
+	<div class="text-dark">
+		注文履歴
+		<%= link_to "一覧を見る", orders_path, class: "btn btn-primary btn-sm m-1" %>
+	</div>
+		
+</div>

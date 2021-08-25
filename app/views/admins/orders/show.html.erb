@@ -31,14 +31,15 @@
         </tr>
         <tr>
           <th class="text-dark" height="40">注文ステータス</th>
-          <td>
-            
-          </td>
+          <%= form_with model: @order, url: admins_order_path, method: :put, local: true do |f| %>
+          <td class="order-box"><%= f.select :order_status, Order.order_statuses.map { |k, v| [t("orderes.order_status.#{k}"), v] } %></td>
+          <td><%= f.submit "更新", class: "btn btn-success" %></td>
+          <% end %>
         </tr>
       </table>
     </div>
   </div>
-    
+
   <div class='row mt-4'>
     <div class='col-md-8'>
       <table class='table table-hover table-inverse'>
@@ -49,23 +50,29 @@
             <th class="text-dark">数量</th>
             <th class="text-dark">小計</th>
             <th class="text-dark">制作ステータス</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <% @ordered_goods.each do |ordered_goods| %>
-            <td class="text-dark"><%= ordered_goods.good.name %></td>
-            <td class="text-dark"><%= ordered_goods.price %></td>
-            <td class="text-dark"><%= ordered_goods.quantity %></td>
+            <% @order.ordered_goods.each do |ordered_good| %>
+            <td class="text-dark"><%= ordered_good.good.name %></td>
+            <td class="text-dark"><%= ordered_good.price %></td>
+            <td class="text-dark"><%= ordered_good.quantity %></td>
             <td class="text-dark">
-              <% subtotal_price = (add_tax_price(f.good.price) * f.quantity.to_i) %>
+              <% subtotal_price = (add_tax_price(ordered_good.good.price) * ordered_good.quantity.to_i) %>
               <%= subtotal_price.to_s(:delimited, delimiter: ',') %>
-              <% total_price += subtotal_price.to_i %>
+            </td>
+            <%= form_with model: ordered_good, url: admins_path(ordered_good.id), method: :patch, local: true do |f| %>
+            <td class="text-dark">
+              <%= f.select :production_status, OrderedGood.production_statuses.map { |k, v| [t("ordered_goods.production_status.#{k}"), v] } %>
+            </td>
+            <td>
+              <%= f.submit "更新", class: "btn btn-success" %>
             </td>
             <% end %>
-            <td class="text-dark">
-              
-            </td>
+            <% end %>
+
           </tr>
         </tbody>
       </table>
@@ -82,7 +89,7 @@
         </tr>
         <tr>
           <th class="text-dark" height="40">ご請求額</th>
-          <td class="text-dark"><%= @order.total_price + @order.shipping_fee.to_s(:delimited) %><span>円</span></td>
+          <td class="text-dark"><%= (@order.total_price + @order.shipping_fee).to_s(:delimited) %><span>円</span></td>
         </tr>
       </table>
     </div>
