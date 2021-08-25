@@ -17,8 +17,22 @@ class Public::Devise::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+  
+  before_action :reject_customer, only: [:create]
 
-  # protected
+  protected
+    
+    def reject_customer
+      @customer = Customer.find_by(email: params[:customer][:email].downcase)
+      if @customer
+        if @customer.active_for_authentication? == false
+          flash[:error] = "退会済みです。"
+          redirect_to new_customer_session_path
+        end
+      else
+        flash[:error] = "必須項目を入力してください。"
+      end
+    end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
