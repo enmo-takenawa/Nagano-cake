@@ -1,21 +1,26 @@
-<h2>管理者ログイン</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <label>メールアドレス</label>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container">
+  <div class="row mt-4 ml-4">
+    <h4 class="bg-light text-dark">管理者ログイン</h4>
   </div>
-
-  <div class="field">
-    <label>パスワード</label>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="login-btn">
-    <%= f.submit "ログイン", class:"btn btn-success" %>
-  </div>
-
-
-<% end %>
-
-
+  
+  <div class="row">
+      <div class="col">
+        <table>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <tr>
+              <th class="text-dark" height="50"><%= f.label :email, "メールアドレス" %></th>
+              <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+            </tr>
+            <tr>
+              <th class="text-dark" height="50"><%= f.label :password, "パスワード" %></th>
+              <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td><%= f.submit "ログイン", class: "btn btn-success" %></td>
+            </tr>
+          </table>
+        <% end %>
+      </div>
+   </div>
+</div>
