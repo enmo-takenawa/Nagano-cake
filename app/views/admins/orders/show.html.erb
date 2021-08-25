@@ -31,9 +31,11 @@
         </tr>
         <tr>
           <th class="text-dark" height="40">注文ステータス</th>
-          <%= form_with model: @order, url: admins_order_path(@order), method: :patch, local: true do |f| %>
-          <td class="order-box"><%= f.select :order_status, @array_order_status, { selected: Order.order_statuses[@order.order_status] } %></td>
-          <td><%= f.submit "更新", class: "btn btn-success" %></td>
+          <td>
+            <%= form_with model: @order, url: admins_order_path(@order), method: :patch, local: true do |f| %>
+            <%= f.select :order_status, @array_order_status, { selected: Order.order_statuses[@order.order_status] } %>
+            <%= f.submit "更新", class: "btn btn-success" %>
+          </td>
           <% end %>
         </tr>
       </table>
