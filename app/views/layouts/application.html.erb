@@ -16,11 +16,11 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <a class="navbar-brand p-3" href = "/"><span><%= image_tag 'tentative_logo.png', :size => '100x100', class: "rounded-pill" %></span></a>
-            <div class="text-middle">
+            <div class="text-middle text-dark">
                <%if admin_signed_in? %>
-               ようこそ、管理者さん
+               ようこそ、管理者さん！
                <% elsif customer_signed_in? %>
-               ようこそ、<%= current_customer.last_name + current_customer.first_name %>さん
+               ようこそ、<%= current_customer.last_name + current_customer.first_name %>さん！
                <% end %>
             </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
