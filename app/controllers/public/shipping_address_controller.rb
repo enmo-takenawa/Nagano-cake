@@ -3,9 +3,9 @@ class Public::ShippingAddressController < ApplicationController
     @shipping_adress_new = ShippingAddress.new
     #@shipping_adress = current_customer.shipping_address
     @shipping_addresses = current_customer.shipping_addresses
-        
+
   end
-    
+
   def create
         @shipping_address = ShippingAddress.new(shipping_address_strong)
         @shipping_address.customer_id = current_customer.id
@@ -18,12 +18,12 @@ class Public::ShippingAddressController < ApplicationController
           render :new
         end
   end
-    
+
   def edit
         @shipping_address = ShippingAddress.find(params[:id])
-        
+
   end
-    
+
   def update
         @shipping_address = ShippingAddress.find(params[:id])
         if @shipping_address.update(shipping_address_params)
@@ -35,18 +35,18 @@ class Public::ShippingAddressController < ApplicationController
         render :edit
         end
   end
-    
+
   def destroy
 
         @shipping_address = ShippingAddress.find(params[:id])
         @shipping_address.destroy
         redirect_to shipping_address_path
   end
-  
+
   private
   def shipping_address_params
     params.require(:shipping_address).permit(:name, :shipping_postal_code, :shipping_address)
-  
+
   end
   def shipping_address_strong
     params.permit(:name, :shipping_postal_code, :shipping_address)
