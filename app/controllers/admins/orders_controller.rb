@@ -22,7 +22,7 @@ class Admins::OrdersController < ApplicationController
           f.update(production_status: 1)
         end
       end
-      redirect_to request.referer
+      redirect_to admins_order_path(@order.id)
     end
   end
 
