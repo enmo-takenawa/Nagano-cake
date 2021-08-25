@@ -1,4 +1,6 @@
 class Admins::GoodsController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
     @goods = Good.all.page(params[:page]).per(10)
   end
