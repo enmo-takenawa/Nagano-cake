@@ -14,16 +14,16 @@
           </tr>
         </thead>
         <tbody>
-          <% @ordered_goods.each do |ordered_goods| %>
+          <% @orders.each do |order| %>
             <tr>
               <td class="text-dark">
-                <%= link_to admins_order_path(ordered_goods.order) do %>
-                  <%= l ordered_goods.created_at %>
+                <%= link_to admins_order_path(order) do %>
+                  <%= l order.created_at %>
                 <% end %>
               </td>
-              <td class="text-dark"><%= ordered_goods.order.customer.last_name %><%= ordered_goods.order.customer.first_name %></td>
-              <td class="text-dark"><%= ordered_goods.quantity %></td>
-              <td class="text-dark"><%= ordered_goods.order.order_status %></td>
+              <td class="text-dark"><%= order.customer.last_name %><%= order.customer.first_name %></td>
+              <td class="text-dark"><%= order.ordered_goods.to_a.sum { |ordered_good| ordered_good.quantity } %></td>
+              <td class="text-dark"><%= order.order_status %></td>
             </tr>
           <% end %>
         </tbody>
@@ -31,7 +31,7 @@
       <div class='container mt-5'>
         <div class='row'>
           <div class='mx-auto'>
-            <p><%= paginate @ordered_goods %></p>
+            <p><%= paginate @orders %></p>
           </div>
         </div>
       </div>
