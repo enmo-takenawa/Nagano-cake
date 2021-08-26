@@ -23,7 +23,7 @@
             <td><%= f.collection_select :genre_id, @genres.all, :id, :name, {prompt:"--選択してください--"}, class: "form-control", style: "" %></td>
           </tr>
           <tr>
-            <th class="text-dark" height="50">税込価格</th>
+            <th class="text-dark" height="50">税抜価格</th>
             <td><%= f.text_field :price, class:"", placeholder: "1000" %><span>円</span></td>
           </div>
           <tr>
