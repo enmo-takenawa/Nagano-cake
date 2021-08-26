@@ -9,8 +9,8 @@
   <div class="row">
     <div class="col">
       <%= flash[:error] %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <table>
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <tr>
           <th class="text-dark" height="50"><%= f.label :email, "メールアドレス" %></th>
           <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
