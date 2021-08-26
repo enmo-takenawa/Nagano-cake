@@ -3,7 +3,7 @@
     <div class="row mt-4 ml-4">
         <h4 class="bg-light text-dark">注文履歴詳細</h4>
     </div>
-    
+
     <div class="row">
     <%#注文情報////////////////////////////////////////////////////////////////////////////////////%>
         <div class="col-8 mt-4">
@@ -31,7 +31,7 @@
                 </tr>
             </table>
         </div>
-        
+
     <%#請求情報////////////////////////////////////////////////////////////////////////////////////%>
         <div class="col-4  mt-4">
             <h5 class="text-dark">請求情報</h5>
@@ -40,12 +40,12 @@
                 <th class="bg-light text-dark">商品合計</th>
                 <td class="text-dark"><%= @order.total_price.to_s(:delimited) %></td>
             </tr>
-            
+
             <tr class="border">
                 <th class="bg-light text-dark">配送料</th>
                 <td class="text-dark"><%= @order.shipping_fee.to_s(:delimited) %></td>
             </tr>
-            
+
             <tr class="border">
                 <th class="bg-light text-dark">ご請求額</th>
                 <td class="text-dark"><%= (@order.total_price + @order.shipping_fee).to_s(:delimited) %></td>
@@ -53,7 +53,7 @@
             </table>
         </div>
     </div>
-    
+
 
     <%#注文内容////////////////////////////////////////////////////////////////////////////////////%>
     <div class="row  mt-4">
@@ -70,16 +70,17 @@
             <% @order.ordered_goods.each do |ordered_good| %>
             <tbody>
                 <tr class = "border">
+                    <% price = add_tax_price(ordered_good.good.price) %>
                     <td class="text-dark"><%= ordered_good.good.name %></td>
-                    <td class="text-dark"><%= ordered_good.price.to_s(:delimited) %></td>
+                    <td class="text-dark"><%= price.to_s(:delimited) %></td>
                     <td class="text-dark"><%= ordered_good.quantity %></td>
-                    <td class="text-dark"><%= (ordered_good.price * ordered_good.quantity).to_s(:delimited) %></td>
+                    <td class="text-dark"><%= (price * ordered_good.quantity).to_s(:delimited) %></td>
                 </tr>
             </tbody>
             <% end %>
         </table>
     </div>
-    
+
     <%= link_to "注文履歴一覧へ戻る", orders_path %>
-    
+
 </div>

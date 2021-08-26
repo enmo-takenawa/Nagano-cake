@@ -11,7 +11,7 @@
             <th class="bg-light text-dark">小計</th>
             <th class="bg-light text-dark"></th>
           </tr>
-  
+
           <% @sum = 0 %>
             <% @cart_items.each do |cart_item| %>
               <tr>
@@ -19,7 +19,9 @@
                   <%= attachment_image_tag cart_item.good, :image, size: "75x50", format: 'jpg' %> <%= cart_item.good.name%>
                 </td>
                 <td class="text-dark">
-                  <%= cart_item.good.price.to_s(:delimited)%>
+                  <%#= cart_item.good.price.to_s(:delimited)%>
+                  <% price = add_tax_price(cart_item.good.price) %>
+                  <%= price.to_s(:delimited)%>
                 </td>
                 <td class="text-dark">
                   <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local:true do |f| %>
@@ -28,9 +30,10 @@
                     <%= f.submit '変更',class:"btn btn-success"%>
                   <% end %>
                 </td>
-                <% @sum += cart_item.quantity.to_i * cart_item.good.price.to_i %>
+                <% price = add_tax_price(cart_item.good.price) %>
+                <% @sum += cart_item.quantity.to_i * price.to_i %>
                 <td class="text-dark">
-                  <%= (cart_item.good.price.to_i * cart_item.quantity.to_i).to_s(:delimited) %>
+                  <%= (price.to_i * cart_item.quantity.to_i).to_s(:delimited) %>
                 </td>
                 <td>
                   <%=link_to '削除する', cart_item_path(cart_item), method: :delete, class: "btn btn-danger m-1" %>
@@ -39,7 +42,7 @@
             <% end %>
         </table>
     </div>
-    
+
     <div class="row">
         <div class="col-4"><%=link_to '買い物を続ける', goods_path, class: "btn btn-primary m-1"%></div>
         <div class="col-4"></div>
@@ -52,11 +55,11 @@
           </table>
         </div>
     </div>
-    
+
     <div class="row">
       <%=link_to '情報入力に進む', new_order_path, class: "btn btn-success mx-auto m-2"%>
     </div>
-    
-    
+
+
   </div>
 </main>

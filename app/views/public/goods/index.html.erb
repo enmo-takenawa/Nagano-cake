@@ -13,7 +13,7 @@
               <%= attachment_image_tag good, :image, size: "200x150", fallback: "no_image.jpg" %>
               <div>
                 <h5 class="text-dark"><%= good.name%></h5>
-                <p class="text-dark">￥<%= good.price.to_s(:delimited)%></p>
+                <p class="text-dark">￥<% price = add_tax_price(good.price) %><%= price.to_s(:delimited)%></p>
               </div>
             <% end %>
             </div>
