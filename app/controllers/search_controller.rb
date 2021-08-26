@@ -19,7 +19,7 @@ class SearchController < ApplicationController
   end
 
   def backward(value)
-    GOod.where("name LIKE ?", "%#{value}")
+    Good.where("name LIKE ?", "%#{value}")
   end
 
   def partical(value)
