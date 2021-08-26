@@ -1,4 +1,6 @@
 class Public::ShippingAddressController < ApplicationController
+  before_action :authenticate_customer!
+  
   def new
     @shipping_adress_new = ShippingAddress.new
     #@shipping_adress = current_customer.shipping_address
