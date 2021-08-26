@@ -5,7 +5,7 @@
     </div>
     <div class="row mt-4">
         <div class="container-fluid">
-            <table class="table table-bordered">
+            <table class="table table-bordered text-center">
                 <thead class="bg-light">
                     <td class="text-dark">注文日</td>
                     <td class="text-dark">配送先</td>
@@ -14,7 +14,7 @@
                     <td class="text-dark">ステータス</td>
                     <td class="text-dark">注文詳細</td>
                 </thead>
-    
+
                 <%#ここから履歴の数字とかを入れるための記述%>
                 <tbody>
                     <% @orders.each do |order| %>
@@ -23,36 +23,36 @@
                         <td class="text-center text-dark">
                             <%= order.created_at.strftime("%Y/%m/%d") %>
                         </td>
-    
-                        
+
+
                         <%#配送先%>
                         <td class="text-center text-dark">
                             <%= "〒" + order.shipping_postal_code %></br>
                             <%= order.shipping_address %></br>
                             <%= order.shipping_name %>
                         </td>
-                        
+
                         <td class="text-center text-dark">
                             <% order.ordered_goods.each do |ordered_good| %>
                                 <%= ordered_good.good.name %></br>
                             <% end %>
                         </td>
-                        
+
                         <td class="text-center text-dark"><%= (order.total_price + order.shipping_fee).to_s(:delimited) %>円</td>
-    
+
                         <td class="text-center text-dark"><%= order.order_status %></td>
-    
+
                         <td class="text-center"><%=link_to "表示する",order_path(order), class: "btn btn-primary" %></td>
-    
+
                     </tr>
                     <% end %>
                 </tbody>
             </table>
          </div>
     </div>
-    
+
     <div>
         <p class="text-center"><%= link_to "戻る", customer_path(current_customer.id)%></p>
     </div>
-    
+
 </div>
