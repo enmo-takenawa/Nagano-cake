@@ -2,36 +2,34 @@
 <% total_price = 0 %>
 <div class="container">
   <div class="row">
-    <div class="col-md-3 mt-5 m-4 px-4 py-1 text-center">
-      <h2 class="bg-light text-dark">注文情報確認</h2>
-    </div>
+      <h2 class="red-border bg-light">注文情報確認</h2>
   </div>
 
   <div class="row">
     <div class="col-md-8">
     　<table class="table table-bordered">
     　  <thead>
-      　  <th class="table-active text-darke">商品名</th>
-      　  <th class="table-active text-darke">単価(税込み)</th>
-      　  <th class="table-active text-darke">数量</th>
-      　  <th class="table-active text-darke">小計</th>
+      　  <th class="table-active text-dark">商品名</th>
+      　  <th class="table-active text-dark">単価(税込み)</th>
+      　  <th class="table-active text-dark">数量</th>
+      　  <th class="table-active text-dark">小計</th>
       　</thead>
       　<tbody>
           <% @cart_items.each do |f| %>
             <tr>
-              <td class="align-middle text-dark">
+              <td class="align-middle">
                 <%= attachment_image_tag f.good, :image, size: "60x60", fallback: "no_image.jpg" %>
                 <strong><%= name = f.good.name %></strong>
               </td>
-              <td class="align-middle text-dark">
+              <td class="align-middle">
                 <%= f.good.name %>
               </td>
-              <td class="align-middle text-dark">
+              <td class="align-middle">
                 <% price = add_tax_price(f.good.price) %>
                 <% price.to_s(:delimited, delimiter: ',') %>
                 <%= quantity = f.quantity %>個
               </td>
-              <td class="align-middle text-dark">
+              <td class="align-middle">
                 <% subtotal_price = (add_tax_price(f.good.price) * f.quantity.to_i) %>
                 <%= subtotal_price.to_s(:delimited, delimiter: ',') %>
                 <% total_price += subtotal_price.to_i %>
