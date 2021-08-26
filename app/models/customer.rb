@@ -10,4 +10,13 @@ class Customer < ApplicationRecord
   has_many :shipping_addresses
   has_many :orders #through: :ordered_good
   has_many :cart_items
+  
+  def inactive_message
+    self.is_deleted? ? super : :special_condition_is_not_valid
+  end
+  
+  def active_for_authentication?
+    super && self.is_deleted?
+  end
+  
 end

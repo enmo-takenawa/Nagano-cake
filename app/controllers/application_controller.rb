@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::Base
-    before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-    def add_tax_price(price)
+  def add_tax_price(price)
       tax = 1.10
       (price * tax).round
-    end
-    helper_method :add_tax_price
+  end
+  helper_method :add_tax_price
 
   def after_sign_out_path_for(resource_or_scope)
       if resource_or_scope == :admin
