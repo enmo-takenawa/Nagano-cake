@@ -5,15 +5,15 @@
         <%= render 'public/goods/genre', genres: @genres %>
       </div>
       <div class="col-lg-10">
-        <h3 class="text-dark">商品一覧<h5 class="ml-2 text-dark">(全<span class="text-dark"><%= @goods_count %></span>件)</h5></h3>
+        <h3 >商品一覧<h5 class="ml-2">(全<span><%= @goods_count %></span>件)</h5></h3>
         <div class="d-flex flex-wrap bd-highlight mb-3">
           <% @goods.each do |good|%>
             <div class="col-sm-6 col-md-4 col-lg-3">
             <%=link_to good_path(good.id) do%>
               <%= attachment_image_tag good, :image, size: "200x150", fallback: "no_image.jpg" %>
               <div>
-                <h5 class="text-dark"><%= good.name%></h5>
-                <p class="text-dark">￥<% price = add_tax_price(good.price) %><%= price.to_s(:delimited)%></p>
+                <h5><%= good.name%></h5>
+                <p>￥<% price = add_tax_price(good.price) %><%= price.to_s(:delimited)%></p>
               </div>
             <% end %>
             </div>

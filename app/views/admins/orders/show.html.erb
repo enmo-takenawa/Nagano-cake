@@ -1,13 +1,13 @@
 <div class="container">
-  <div class="row mt-4 ml-4">
-    <h4 class="bg-light text-dark">注文履歴詳細</h4>
+  <div class="row">
+    <h4 class="red-border g-light m-4">注文履歴詳細</h4>
   </div>
   <div class="row mt-4">
     <div class='col'>
       <table>
         <tr>
           <th class="text-dark" width="170" height="40">購入者</th>
-          <td class="text-dark">
+          <td>
             <%= link_to admins_customer_path(@order.customer) do %>
              <%= @order.customer.last_name %>
              <%= @order.customer.first_name %>
@@ -16,18 +16,18 @@
         </tr>
         <tr>
       	  <th class="text-dark" height="40">購入日</th>
-      	  <td class="text-dark"><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+      	  <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
       	  <th class="text-dark" height="40">配送先</th>
-      	  <td class="text-dark">
+      	  <td>
       	    〒<%= @order.customer.postal_code %>
       	    <%= @order.shipping_address %>
       	    </td>
         </tr>
         <tr>
           <th class="text-dark" height="40">支払い方法</th>
-          <td class="text-dark"><%= @order.payment_method %></td>
+          <td><%= @order.payment_method %></td>
         </tr>
         <tr>
           <th class="text-dark" height="40">注文ステータス</th>

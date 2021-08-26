@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row mt-4 ml-5">
-    <h4 class="bg-light text-dark">商品詳細</h4>
+  <div class="row">
+    <h4 class=red-border "bg-light m-4">商品詳細</h4>
   </div>
   <div class='row mt-5'>
     <div class="col-md-4">
@@ -10,19 +10,19 @@
       <table>
         <tr>
       	  <th class="text-dark" width="170" height="40">商品名</th>
-      	  <td class="text-dark"><%= @good.name %></td>
+      	  <td><%= @good.name %></td>
         </tr>
         <tr>
       	  <th class="text-dark" height="40">商品説明</th>
-       	  <td class="text-dark"><%= @good.introduction %></td>
+       	  <td><%= @good.introduction %></td>
         </tr>
         <tr>
           <th class="text-dark" height="50">ジャンル</th>
-          <td class="text-dark"><%= @good.genre.name %></td>
+          <td><%= @good.genre.name %></td>
         </tr>
         <tr>
           <th class="text-dark" height="50">税込価格<br>(税抜価格)</th>
-          <td class="text-dark"><%= @good.price.to_s(:delimited) %><span>円</span></td>
+          <td><%= @good.price.to_s(:delimited) %><span>円</span></td>
         </tr>
         <tr>
           <th class="text-dark" height="50">販売ステータス</th>

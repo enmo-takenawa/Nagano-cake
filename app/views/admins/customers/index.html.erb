@@ -1,6 +1,6 @@
-<div class="container px-5 px-sm-0">
-  <div class="row mt-4 ml-4">
-    <h4 class="bg-light text-dark">会員一覧</h4>
+<div class="container">
+  <div class="row">
+    <h4 class="red-border bg-light m-4">会員一覧</h4>
   </div>
   <div class="row mt-4">
     <div class='col-md-8 mx-auto'>
@@ -16,13 +16,13 @@
         <tbody>
           <% @customers.each do |customer| %>
           <tr>
-            <td class="text-dark"><%= customer.id %></td>
+            <td><%= customer.id %></td>
             <td>
               <%= link_to admins_customer_path(customer.id) do %>
                 <%= customer.last_name %><%= customer.first_name %>
               <% end %>
             </td>
-            <td class="text-dark"><%= customer.email %></td>
+            <td><%= customer.email %></td>
             <% if customer.is_deleted == true %>
               <td class="text-success">有効</td>
               <% else %>

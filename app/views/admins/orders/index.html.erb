@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row mt-4 ml-4">
-    <h4 class="bg-light text-dark">注文履歴一覧</h4>
+  <div class="row">
+    <h4 class="red-border bg-light m-4">注文履歴一覧</h4>
   </div>
   <div class="row mt-4">
     <div class='col-md-8 mx-auto'>
@@ -16,14 +16,14 @@
         <tbody>
           <% @orders.each do |order| %>
             <tr>
-              <td class="text-dark">
+              <td>
                 <%= link_to admins_order_path(order) do %>
                   <%= l order.created_at %>
                 <% end %>
               </td>
-              <td class="text-dark"><%= order.customer.last_name %><%= order.customer.first_name %></td>
-              <td class="text-dark"><%= order.ordered_goods.to_a.sum { |ordered_good| ordered_good.quantity } %></td>
-              <td class="text-dark"><%= order.order_status %></td>
+              <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+              <td><%= order.ordered_goods.to_a.sum { |ordered_good| ordered_good.quantity } %></td>
+              <td><%= order.order_status %></td>
             </tr>
           <% end %>
         </tbody>
